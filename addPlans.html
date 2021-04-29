@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Add Plan
+    </title>
+    <link rel="stylesheet" href="assets/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+</nav>
+<br>
+<div class="container">
+    <div class="jumbotron">
+    <form>
+        <fieldset>
+            <legend>Ajout d'un plan</legend>
+            <br>
+            <label for="name" class="col-sm-4 col-form-label">Give it a name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-plaintext" id="name" name="name">
+            </div>
+            <br>
+            <label for="location" class="col-sm-4 col-form-label">Where will it be held?</label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control-plaintext" id="location" name="location">
+            </div>
+            <br>
+            <label for="datetime" class="col-sm-4 col-form-label">Choose a date and time </label>
+            <div class="col-sm-10">
+                <input type="datetime-local" class="form-control-plaintext" id="datetime" name="datetime">
+            </div>
+            <br>
+            <label for="nb" class="col-sm-5 col-form-label">How many people at most can attend this event ?</label>
+            <div class="col-sm-10">
+                <input type="number" min="2"  class="form-control-plaintext" id="nb" name="nb">
+            </div>
+            <br>
+            <label for="repeat" class="col-sm-4 col-form-label">Repeat ?</label>
+            <div class="col-sm-10">
+                <pre></pre>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="1" value="1">
+                    Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="2" value="2">
+                    Month&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="3" value="3">
+                    Day&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="4" value="4">
+                    Never&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                 for :
+            </div>
+        </fieldset>
+        <br>
+        <br>
+        <br>
+        <button type="button" id="add" class="btn btn-primary">Add</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <legend>Liste des plans</legend>
+        <ul id="plans" class="list-group">
+        </ul>
+        <br>
+        <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+<script src="assets/js/plans.js"></script>
+</body>
+</html>

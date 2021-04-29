@@ -1,15 +1,19 @@
 .jumbotron{
-    background: url("photos/joinus.jpg");
+    background: url("photos/joinus.png");
     background-size:cover;
     background-position: center center;
-    height: 700px;
+    height: 660px;
     width: 100%;
-    padding-top: 200px;
+    padding-top: 140px;
     margin-bottom: 0px;
     color:white;
     font-size : 20px;
 }
 
-#navbar , p{
-    background-color: rgba(156, 156, 156, 0.486) !important;
+#navbar{
+    background-color: rgba(143, 119, 119, 0.486) !important;
+}
+
+#text{
+    width:300px;
 }

@@ -12,7 +12,9 @@ class plan
         li.classList.add("d-flex");
         li.classList.add("justify-content-between");
         li.classList.add("align-items-center");
-        li.innerHTML = `${this.name} at ${this.content}`;
+        var color = document.querySelector(".circle").style.backgroundColor;
+        li.innerHTML = ` ${this.name} at ${this.content}`;
+        li.style.color = color;
         return(li);
     }
 }

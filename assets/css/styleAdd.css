@@ -1,0 +1,27 @@
+body
+{
+    background-image: url("../photos/pattern.jpg");
+}
+
+.inputs
+{
+    width:1050px;
+}
+
+.circle
+{
+    height: 20px;
+    width: 20px;
+    background-color: #555;
+    border-radius: 50%;
+    float: left;
+    margin-right: 25px;
+    transform: translate(0,8px);
+}
+
+#menu
+{
+    visibility: hidden;
+}
+
+

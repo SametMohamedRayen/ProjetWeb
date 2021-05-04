@@ -5,7 +5,7 @@
 
 /*JoinUs Section*/
 #joinus-section{
-    background: url("photos/joinus.png");
+    background: url("../photos/joinus.png");
     background-size:cover;
     background-position: center center;
     height: 660px;
@@ -16,10 +16,9 @@
     font-size : 20px;
 }
 #joinus-title{
-    /*text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;*/
     text-shadow: -10px 10px 0px #b30e0e15;
 }
+
 #joinus-text{
     width:300px;
 }
-

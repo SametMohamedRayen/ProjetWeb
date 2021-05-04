@@ -4,8 +4,9 @@
     <title>
         Add Plan
     </title>
-    <link rel="stylesheet" href="assets/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styleAdd.css"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -14,8 +15,19 @@
 <div class="container">
     <div class="jumbotron">
     <form>
+        <h2>Ajout d'un plan</h2>
         <fieldset>
-            <legend>Ajout d'un plan</legend>
+            <br>
+            <span  id="change_color">
+                <div class="circle"></div>
+                <legend>My plan</legend>
+            </span>
+            <div id="menu">
+                <div class="circle" id="red"></div>
+                <div class="circle" id="blue"></div>
+                <div class="circle" id="green"></div>
+                <div class="circle" id="yellow"></div>
+            </div>
             <br>
             <label for="name" class="col-sm-4 col-form-label">Give it a name</label>
             <div class="col-sm-10">

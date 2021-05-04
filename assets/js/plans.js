@@ -95,13 +95,13 @@ planName.value = "My plan";
 
 planName.addEventListener("keyup",()=>{
     const where = document.querySelector("legend");
-    if( where.innerHTML == "")
+   /* if( where.innerHTML.value == "")
     {
         where.innerHTML = "My Plan";
     }
-    else{
+    else{*/
         where.innerHTML = planName.value;
-    }    
+   /* } */   
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -113,6 +113,10 @@ change.addEventListener("mouseover",()=>
     document.getElementById("menu").style.visibility ="visible";
 });
 
+document.getElementById("menu").addEventListener("mouseout",()=>
+{
+    document.getElementById("menu").style.visibility="hidden";
+});
 //////////////////////////////////////////////////////////////////////
 
 const red = "#D10000";

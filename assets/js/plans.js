@@ -106,6 +106,15 @@ planName.addEventListener("keyup",()=>{
 
 //////////////////////////////////////////////////////////////////////
 
+const change = document.getElementById("change_color");
+
+change.addEventListener("mouseover",()=>
+{
+    document.getElementById("menu").style.visibility ="visible";
+});
+
+//////////////////////////////////////////////////////////////////////
+
 const red = "#D10000";
 const yellow = "#FFBD00";
 const blue = "#2E0097";

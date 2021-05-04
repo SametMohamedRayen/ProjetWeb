@@ -19,16 +19,9 @@ body
     transform: translate(0,8px);
 }
 
-.menu
+#menu
 {
     visibility: hidden;
-    transition: all 0s ease 4s;
 }
 
-.change_color:hover + .menu{
-    visibility: visible;
-    border-radius: 25%;
-    background-color: wheat;
-    transition-delay: 0s;
-    
-}
+

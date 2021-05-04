@@ -22,6 +22,14 @@ body
 #menu
 {
     visibility: hidden;
+    width: fit-content;
 }
+
+#change_color
+{
+    width:fit-content;
+}
+
+
 
 

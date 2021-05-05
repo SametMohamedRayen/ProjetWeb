@@ -1,5 +1,5 @@
 .jumbotron{
-    background: url("photos/joinus.png");
+    background: url("../photos/joinus.png");
     background-size:cover;
     background-position: center center;
     height: 660px;
@@ -16,4 +16,33 @@
 
 #text{
     width:300px;
+}
+
+
+.map
+{
+    margin-left: 683px;
+    height: 888px;
+    width: 666px;
+    position: absolute;
+    transform: translate(0,-550px);
+
+}
+
+.span1
+{
+    padding-left: 15px;
+}
+
+.sect2
+{
+    background-image: url("../photos/map.jpg");
+    /*Correct display*/
+}
+
+.lis:hover
+{
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 50%;
+    
 }

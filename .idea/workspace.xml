@@ -6,37 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/.php-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/LastSections.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/aboutUsSection.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/contactUs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/nicepage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/styleAdd.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/css/styleFind.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/email.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/events-heavenly-header.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/facebook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/joinus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/map.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/pattern.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/images/twitter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/js/jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/js/nicepage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/public/assets/js/plans.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/activity/endroitForm.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/activity/evnend.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/activity/inout.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/findPlans.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetSiteActivité/templates/layout.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetSiteActivité/.env" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetSiteActivité/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetSiteActivité/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetSiteActivité/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetSiteActivité/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetSiteActivité/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addPlans.html" beforeDir="false" afterPath="$PROJECT_DIR$/addPlans.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/LastSections.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/aboutUsSection.css" beforeDir="false" />
@@ -110,7 +81,7 @@
       <updated>1619466134678</updated>
       <workItem from="1619466148863" duration="311000" />
       <workItem from="1620435569803" duration="3186000" />
-      <workItem from="1621953779456" duration="20721000" />
+      <workItem from="1621953779456" duration="21065000" />
     </task>
     <servers />
   </component>

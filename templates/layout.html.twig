@@ -1,0 +1,25 @@
+<html>
+<head>
+    {% block stylesheet %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+    {% endblock %}
+    {%  block js %}
+    {% endblock %}
+    <title>{% block title %}Page{% endblock %}</title>
+</head>
+<body>
+   {% block messages %}
+   {% for message in app.session.flashbag.get('info') %}
+   {% endfor %}
+   {% for message in app.session.flashbag.get('error') %}
+   {% endfor %}
+   {% for message in app.session.flashbag.get('success') %}
+   {% endfor %}
+   {% endblock %}
+
+
+
+   {% block body %}
+   {% endblock %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet%}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styleAdd.css') }}"/>
+{% endblock %}
+{%  block body %}
+    <div class="container">
+    <div class="jumbotron">
+    {{ form_start(form) }}
+        <h2>Ajout d'un plan</h2>
+        <fieldset>
+            <br>
+            <span  id="change_color">
+                <div class="circle"></div>
+                <legend>My plan</legend>
+            </span>
+            <span id="menu">
+                <div class="circle" id="red"></div>
+                <div class="circle" id="blue"></div>
+                <div class="circle" id="green"></div>
+                <div class="circle" id="yellow"></div>
+            </span>
+            <br>
+            {{ form(form) }}
+            <br>
+
+
+
+    {{ form_end(form) }}
+    </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Liste des plans</h2>
+            <ul id="plans" class="list-group">
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/plans.js') }}"></script>
+{% endblock %}

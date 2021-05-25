@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addPlans.html" beforeDir="false" afterPath="$PROJECT_DIR$/addPlans.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/LastSections.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/aboutUsSection.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/contactUs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/nicepage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/styleAdd.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/styleFind.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/jquery-1.9.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/nicepage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/plans.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/email.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/events-heavenly-header.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/joinus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/map.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/pattern.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/phone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/photos/twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/findPlans.html" beforeDir="false" afterPath="$PROJECT_DIR$/findPlans.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +54,7 @@
       <updated>1619466134678</updated>
       <workItem from="1619466148863" duration="311000" />
       <workItem from="1620435569803" duration="3186000" />
-      <workItem from="1621953779456" duration="21065000" />
+      <workItem from="1621953779456" duration="21770000" />
     </task>
     <servers />
   </component>

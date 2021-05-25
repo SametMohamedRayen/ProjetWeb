@@ -1,0 +1,15 @@
+{%  extends("layout.html.twig")%}
+
+{% block title%}Add Plans{% endblock %}
+{%  block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styleAdd.css') }}"/>
+{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    </nav>
+        <div class="d-grid gap-2">
+            <a class="btn btn-lg btn-primary" href="{%  block path1 %}{{ path('evnend') }}{% endblock %}">{% block option1 %}Outdoor{%  endblock %}</a>
+            <a class="btn btn-lg btn-primary"  href="{% block path2 %}{{ path('ind') }}{% endblock %}">{% block option2 %}Indoor{%  endblock %}</a>
+        </div>
+{% endblock %}

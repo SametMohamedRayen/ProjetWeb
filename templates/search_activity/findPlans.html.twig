@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href= "{{asset('assets/css/styleFind.css')}}">
+    <title>NAME!!!</title>
+</head>
+<body>
+<div class="ml-3">
+
+    <div class="row">
+
+        <!--Side FilterBar-->
+
+        <form class="col-md-4 col-lg-2">
+            <h3 class="mb-5">Find a plan</h3>
+            <div class="divider mt-5 border-secondary"></div>
+            <div>
+            <!--Events Option-->
+                <div class="custom-control ">
+                    {{ form(form.Events) }}
+                    <!--Hidden events options-->
+                    {{ form(eventOptions) }}
+                </div>
+
+            <!--Endroits Option-->
+            <div class="custom-control">
+                {{ form(form.Places) }}
+                <!--Hidden resto options-->
+                {{ form(placeOptions) }}
+
+            </div>
+            </div>
+
+            <div class="divider mt-3 mb-5 border-bottom border-secondary"></div>
+        </form>
+
+        <!--Search Result-->
+        <div class=" col-lg-9">
+            <div class="row mt-5" >
+
+                <!--Events Section-->
+                <div>
+                <!--Event Card-->
+                    {% for event in events %}
+                    <div class="col-6 col-md-6 col-lg-4 mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <img src="{{asset('assets/images/eventsheader.jpg')}}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5>{{ event.name }}</h5>
+                                    <p>{{ event.description }}</p>
+                                    <p>City:</p>
+                                    <p>Date: {{ event.date }}</p>
+                                    <p>Price: </p>
+                                    <button type="button" class="btn btn-dark rounded">Details</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+
+                <!--Endroits Section-->
+                <div>
+                    <!--Endroit Card-->
+                    <div class="col-6 col-md-6 col-lg-4 mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <img src="assets/photos/restocard.jpg" class="card-img-top">
+                                <div class="card-body">
+                                    <h5>Restaurant</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta facilis voluptatibus laudantium nostrum qui magnam facere eligendi! Tempora maiores beatae corporis nam fugit, ut molestias cumque, explicabo ipsa voluptatem quo!</p>
+                                    <p>City:</p>
+                                    <button type="button" class="btn btn-dark rounded">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="{{ asset('assets/js/findPlans.js') }}"></script>
+
+</body>
+</html>

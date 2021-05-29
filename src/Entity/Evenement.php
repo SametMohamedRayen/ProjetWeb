@@ -51,12 +51,7 @@ class Evenement
     /**
      * @ORM\Column(type="float")
      */
-    private $price_min;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $price_max;
+    private $price;
 
     /**
      * @ORM\Column(type="array")

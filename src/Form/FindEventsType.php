@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,13 +19,15 @@ class FindEventsType extends AbstractType
             ->add('eco_friendly')
             ->add('name')
             ->add('photo')
-            ->add('price_min')
-            ->add('price_max')
+            ->add('price')
             ->add('target')
             ->add('date')
             ->add('duration')
             ->add('link')
             ->add('number')
+            ->add('Add', SubmitType::class, [
+                'attr' => ['label' => 'Search']
+            ])
         ;
     }
 

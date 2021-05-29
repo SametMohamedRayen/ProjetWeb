@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Endroit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,6 +26,9 @@ class FindPlacesType extends AbstractType
             ->add('open')
             ->add('close')
             ->add('name')
+            ->add('Add', SubmitType::class, [
+                'attr' => ['label' => 'Search']
+            ])
         ;
     }
 

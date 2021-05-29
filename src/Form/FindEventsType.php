@@ -25,7 +25,7 @@ class FindEventsType extends AbstractType
             ->add('duration')
             ->add('link')
             ->add('number')
-            ->add('Search', SubmitType::class, [
+            ->add('Add', SubmitType::class, [
                 'attr' => ['label' => 'Search']
             ])
         ;

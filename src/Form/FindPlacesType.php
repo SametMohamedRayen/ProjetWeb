@@ -29,6 +29,7 @@ class FindPlacesType extends AbstractType
             ->add('Search', SubmitType::class, [
                 'attr' => ['label' => 'Search']
             ])
+            ->setMethod('POST')
         ;
     }
 

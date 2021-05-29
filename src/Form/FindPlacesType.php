@@ -26,7 +26,7 @@ class FindPlacesType extends AbstractType
             ->add('open')
             ->add('close')
             ->add('name')
-            ->add('Add', SubmitType::class, [
+            ->add('Search', SubmitType::class, [
                 'attr' => ['label' => 'Search']
             ])
         ;

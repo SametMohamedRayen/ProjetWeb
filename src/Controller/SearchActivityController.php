@@ -13,12 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchActivityController extends AbstractController
 {
-
-    #[Route('/search/events', name: 'searchevents')]
+    /**
+     * @Route("/search",name="search")
+     */
     public function index(): Response
     {
+        return $this->render('search/index.html.twig', [
+            'controller_name' => 'ActivityController',
+        ]);
     }
-
+    /**
+     * @Route("/search/events",name="searchevents")
+     */
     public function searchevents(): Response
     {
         $eventOptions = $this->createForm(FindEventsType::class);
@@ -32,14 +38,17 @@ class SearchActivityController extends AbstractController
 
 
     }
-
-    #[Route('/search/places', name: 'searchplaces')]
+    /**
+     * @Route("/search/places",name="searchplaces")
+     */
     public function searchplaces(): Response
     {
         $placeOptions = $this->createForm(FindPlacesType::class);
-
+        $placerepository = $this->getDoctrine()->getRepository('App:Endroit');
+        $places = $placerepository->findBy([], [], 9);
         return $this->render('search/findPlaces.html.twig', [
             'placeOptions' => $placeOptions->createView(),
+            'places' => $places,
         ]);
 
 

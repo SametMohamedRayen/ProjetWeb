@@ -1,5 +1,10 @@
 {% extends 'search/findPlanslayout.html.twig' %}
 
+
+{% block other1 %} Places {% endblock %}
+{% block other2 %} Indoor {% endblock %}
+{% block name %} Find an event {% endblock %}
+{% block activity %} an event {% endblock %}
 {% block form %}
     {{ form(eventOptions) }}
 {% endblock %}

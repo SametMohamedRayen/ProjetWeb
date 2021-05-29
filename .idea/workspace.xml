@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.php-version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/events-heavenly-header.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/findPlans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search_activity/findPlans.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Indoor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Indoor.php" afterDir="false" />
@@ -174,8 +181,7 @@
       <workItem from="1621953779456" duration="21770000" />
       <workItem from="1622120543624" duration="19879000" />
       <workItem from="1622211446304" duration="447000" />
-      <workItem from="1622239747612" duration="10549000" />
-      <workItem from="1622323206004" duration="8618000" />
+      <workItem from="1622239747612" duration="9445000" />
     </task>
     <servers />
   </component>

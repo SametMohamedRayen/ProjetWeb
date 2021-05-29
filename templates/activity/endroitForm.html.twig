@@ -6,9 +6,7 @@
 {%  block body %}
     <div class="container">
     <div class="jumbotron">
-    {{ form_start(form) }}
         <h2>Ajout d'un plan</h2>
-        <fieldset>
             <br>
             <span  id="change_color">
                 <div class="circle"></div>
@@ -21,20 +19,9 @@
                 <div class="circle" id="yellow"></div>
             </span>
             <br>
-            {{ form(form) }}
+            {% block form %}{{ form(form) }}{% endblock %}
             <br>
 
-
-
-    {{ form_end(form) }}
-    </div>
-    </div>
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Liste des plans</h2>
-            <ul id="plans" class="list-group">
-            </ul>
-            <br>
             <button type="button" class="btn btn-primary">Submit</button>
         </div>
     </div>

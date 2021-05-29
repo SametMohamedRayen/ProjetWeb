@@ -19,6 +19,29 @@ body
     transform: translate(0,8px);
 }
 
+.cent
+{
+    margin-top: 30px;
+    margin-left: 42.5%;
+}
+
+.star {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 400px;
+    color: #0d0d0d;
+
+}
+
+.halfs {
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+
+}
+
+
+
 #menu
 {
     visibility: hidden;

@@ -1,0 +1,32 @@
+{% extends 'search/findPlanslayout.html.twig' %}
+
+
+{% block other1 %} Places {% endblock %}
+{% block other2 %} Indoor {% endblock %}
+{% block name %} Find an event {% endblock %}
+{% block activity %} an event {% endblock %}
+{% block form %}
+    {{ form(eventOptions) }}
+{% endblock %}
+
+{% block card%}
+    <!--Event Card-->
+    {% for event in events %}
+        <div class="col-6 col-md-6 col-lg-4 mb-3">
+            <div class="col">
+                <div class="card">
+                    <img src="{{asset('assets/images/eventsheader.jpg')}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5> {{ event.name }}</h5>
+                        <p> {{ event.description }}</p>
+                        <p>City:</p>
+                        <p>Date: {{ event.date|date("m/d/Y") }}</p>
+                        <p>Price: </p>
+                        <button type="button" class="btn btn-dark rounded">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

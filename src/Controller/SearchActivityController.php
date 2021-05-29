@@ -13,23 +13,45 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchActivityController extends AbstractController
 {
-    #[Route('/search', name: 'search_activity')]
+    /**
+     * @Route("/search",name="search")
+     */
     public function index(): Response
     {
-        $form = $this->createForm(FindPlansType::class);
+        return $this->render('search/index.html.twig', [
+            'controller_name' => 'ActivityController',
+        ]);
+    }
+    /**
+     * @Route("/search/events",name="searchevents")
+     */
+    public function searchevents(): Response
+    {
         $eventOptions = $this->createForm(FindEventsType::class);
-        $placeOptions = $this->createForm(FindPlacesType::class);
         $eventrepository = $this->getDoctrine()->getRepository('App:Evenement');
-        $events = $eventrepository->findBy([],[],6) ;
+        $events = $eventrepository->findBy([], [], 9);
 
-        return $this->render('search_activity/findPlans.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('search/findEvents.html.twig', [
             'eventOptions' => $eventOptions->createView(),
-            'placeOptions' => $placeOptions->createView(),
             'events' => $events,
         ]);
 
 
+    }
+    /**
+     * @Route("/search/places",name="searchplaces")
+     */
+    public function searchplaces(): Response
+    {
+        $placeOptions = $this->createForm(FindPlacesType::class);
+        $placerepository = $this->getDoctrine()->getRepository('App:Endroit');
+        $places = $placerepository->findBy([], [], 9);
+        return $this->render('search/findPlaces.html.twig', [
+            'placeOptions' => $placeOptions->createView(),
+            'places' => $places,
+        ]);
+
 
     }
+
 }

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href= "{{asset('assets/css/styleFind.css')}}">
+    <title> {% block name %} {% endblock %}</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+    <a class="navbar-brand">
+        <img src="" height="28" alt="Logo">
+    </a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="">Search {% block other1 %} {% endblock %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search {% block other2 %} {% endblock %}</a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"> <button class="btn btn-warning rounded">Se Connecter</button> </li>
+            <li class="nav-item"> <button class="btn btn-warning rounded">S'inscrire</button> </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="ml-3 mt-5">
+    <div class="row">
+
+        <!--Side FilterBar-->
+        <form class="col-md-4 col-lg-3 mt-5">
+            <h3 class="mb-3 mt-5">Find {% block activity %}  {% endblock %}</h3>
+            <div class="divider mt-4 border-secondary"></div>
+            <div>
+                <!--Events Option-->
+                <div class="custom-control mt-2">
+                    {% block form %}
+
+                    {% endblock %}
+                </div>
+
+            </div>
+
+            <div class="divider mt-1 mb-5 border-bottom border-secondary"></div>
+        </form>
+
+        <!--Search Result-->
+
+        <div class=" col-lg-8 mt-5">
+            <div class="row mt-5">
+                {% block card %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

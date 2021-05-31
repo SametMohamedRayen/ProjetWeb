@@ -19,7 +19,7 @@ class Evenement
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $age_min;
 
@@ -155,26 +155,14 @@ class Evenement
         return $this;
     }
 
-    public function getPriceMin(): ?float
+    public function getPrice(): ?float
     {
-        return $this->price_min;
+        return $this->price;
     }
 
-    public function setPriceMin(float $price_min): self
+    public function setPrice(float $price): self
     {
-        $this->price_min = $price_min;
-
-        return $this;
-    }
-
-    public function getPriceMax(): ?float
-    {
-        return $this->price_max;
-    }
-
-    public function setPriceMax(float $price_max): self
-    {
-        $this->price_max = $price_max;
+        $this->price = $price;
 
         return $this;
     }

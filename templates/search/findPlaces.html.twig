@@ -1,5 +1,9 @@
 {% extends 'search/findPlanslayout.html.twig' %}
 
+{% block other1 %} Events {% endblock %}
+{% block other2 %} Indoor {% endblock %}
+{% block name %} Find a place {% endblock %}
+{% block activity %} a place {% endblock %}
 {% block form %}
     {{ form(placeOptions) }}
 {% endblock %}
@@ -22,4 +26,17 @@
         </div>
     {% endfor %}
 
+{% endblock %}
+
+{% block Pagination %}
+    <div>
+        <ul class="pagination">
+            {% if page >1 %}
+                <li><a class="page-link" href="{{ path('searchplaces', {'page': page-1 }) }}" >&laquo; Previous</a></li>
+            {% endif %}
+            {% if page < maxpage %}
+                <li><a class="page-link" href="{{ path('searchplaces', {'page': page+1 }) }}" >Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
 {% endblock %}

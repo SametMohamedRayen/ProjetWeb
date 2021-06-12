@@ -40,11 +40,6 @@ class Endroit
     private $eco_friendly;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $nom;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $photo;
@@ -140,18 +135,6 @@ class Endroit
     public function setEcoFriendly(bool $eco_friendly): self
     {
         $this->eco_friendly = $eco_friendly;
-
-        return $this;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
 
         return $this;
     }

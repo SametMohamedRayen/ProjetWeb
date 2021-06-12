@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Endroit;
 use App\Entity\Evenement;
 use App\Form\FindEventsType;
 use App\Form\FindPlacesType;
@@ -42,7 +43,7 @@ class SearchActivityController extends AbstractController
 
         //PAGINATION
         $offset = 12;
-        $maxpage = count($events)/3;
+        $maxpage = count($events)/$offset;
         $events2= null;
         $j=1;
         for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
@@ -62,20 +63,46 @@ class SearchActivityController extends AbstractController
 
 
     }
+
+
+
     /**
-     * @Route("/search/places",name="searchplaces")
+     * @Route("/search/places/{page?1}",name="searchplaces"), methods={"POST"})
      */
-    public function searchplaces(): Response
+    public function searchplaces(Request $request, Endroit $places=null, $page): Response
     {
-        $placeOptions = $this->createForm(FindPlacesType::class);
-        $placerepository = $this->getDoctrine()->getRepository('App:Endroit');
-        $places = $placerepository->findBy([], [], 9);
+        $form = $this->createForm(FindPlacesType::class,$places);
+        $form->handleRequest($request);
+
+        if(($form->isSubmitted()) ) {
+            $data = $form->getData();
+            $placerepository = $this->getDoctrine()->getRepository('App:Endroit');
+            $places = $placerepository->recherche($data);
+        }
+        else{
+            $placerepository = $this->getDoctrine()->getRepository('App:Endroit');
+            $places = $placerepository->findAll();
+        }
+
+        //PAGINATION
+        $offset = 12;
+        $maxpage = count($places)/$offset;
+        $places2= null;
+        $j=1;
+        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+        {
+            if(isset($places[$i])) {
+                $places2[$j] = $places[$i];
+                $j++;
+            }
+        }
+
         return $this->render('search/findPlaces.html.twig', [
-            'placeOptions' => $placeOptions->createView(),
-            'places' => $places,
+            'placeOptions' => $form->createView(),
+            'places' => $places2,
+            'page'=> $page,
+            'maxpage'=> $maxpage,
         ]);
-
-
     }
 
 }

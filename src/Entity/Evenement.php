@@ -51,7 +51,12 @@ class Evenement
     /**
      * @ORM\Column(type="float")
      */
-    private $price;
+    private $price_max;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price_min;
 
     /**
      * @ORM\Column(type="array")
@@ -166,14 +171,26 @@ class Evenement
     }
 
 
-    public function getPrice(): ?float
+    public function getPriceMax(): ?float
     {
-        return $this->price;
+        return $this->price_max;
     }
 
-    public function setPrice(float $price): self
+    public function setPriceMax(float $price): self
     {
-        $this->price = $price;
+        $this->price = $price_max;
+
+        return $this;
+    }
+
+    public function getPriceMin(): ?float
+    {
+        return $this->price_min;
+    }
+
+    public function setPriceMin(float $price): self
+    {
+        $this->price = $price_min;
 
         return $this;
     }

@@ -29,7 +29,8 @@ class EvenementRepository extends ServiceEntityRepository
             "age_max" => $obj->getAgeMax(),
             "eco_friendly"=>$obj->getEcoFriendly(),
             "date"=>$obj->getDate(),
-            "price"=> $obj->getPrice(),
+            "price_max"=> $obj->getPriceMax(),
+            "price_min"=> $obj->getPriceMin(),
             "duration"=> $obj->getDuration(),
             "number" => $obj->getNumber(),
         ];
@@ -37,8 +38,18 @@ class EvenementRepository extends ServiceEntityRepository
         $result = $this->createQueryBuilder('e');
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
-                $result->andWhere('e.'.$critere.' = :'.$critere);
+                if($critere == "price_min"){
+                    $result->andWhere('e.'.$critere.' >= :'.$critere);
+                }
+                elseif ($critere=="price_max"){
+                    $result->andWhere('e.'.$critere.' <= :'.$critere);
+                }
+                else{
+                    $result->andWhere('e.'.$critere.' = :'.$critere);
+                }
+
                 $result->setParameter($critere,$valeur);
+
             }
         }
 

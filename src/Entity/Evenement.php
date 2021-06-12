@@ -51,7 +51,12 @@ class Evenement
     /**
      * @ORM\Column(type="float")
      */
-    private $price;
+    private $price_min;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price_max;
 
     /**
      * @ORM\Column(type="array")
@@ -148,6 +153,11 @@ class Evenement
         return $this->photo;
     }
 
+    public function getTarget(): ?array
+    {
+        return $this->target;
+    }
+
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
@@ -155,21 +165,28 @@ class Evenement
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPriceMin(): ?float
     {
-        return $this->price;
+        return $this->price_min;
     }
 
-    public function setPrice(float $price): self
+    public function setPriceMin(float $price): self
     {
-        $this->price = $price;
+        $this->price_min = $price;
 
         return $this;
     }
 
-    public function getTarget(): ?array
+    public function getPriceMax(): ?float
     {
-        return $this->target;
+        return $this->price_max;
+    }
+
+    public function setPriceMax(float $price): self
+    {
+        $this->price_max = $price;
+
+        return $this;
     }
 
     public function setTarget(array $target): self

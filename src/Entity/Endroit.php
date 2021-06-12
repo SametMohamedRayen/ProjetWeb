@@ -23,6 +23,7 @@ class Endroit
      */
     private $age_min;
 
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -82,6 +83,13 @@ class Endroit
      * @ORM\Column(type="string", length=50)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $user;
+
+
 
     public function getId(): ?int
     {
@@ -240,6 +248,18 @@ class Endroit
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

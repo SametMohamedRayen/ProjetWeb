@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
+use ContainerBi1bDen\getEndroitRepositoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * @Route("/account")
+ * @Route("/account/{username}")
  */
 class AccountController extends AbstractController
 {
@@ -27,7 +29,13 @@ class AccountController extends AbstractController
      */
     public function showActivities(): Response
     {
+
+        $repositoryEndroit = $this->getDoctrine()->getRepository(endroit::class);
+        $repositoryEvent = $this->getDoctrine()->getRepository(evennement::class);
+        $repositoryIndoor = $this->getDoctrine()->getRepository(indoor::class);
+
         return $this->render('account/showActivities.html.twig', [
+
 
         ]);
 

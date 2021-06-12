@@ -54,6 +54,8 @@ class Compte
     private $occupation;
 
 
+
+
     public function getAdresseMail(): ?string
     {
         return $this->adresseMail;

@@ -23,25 +23,41 @@ class SearchActivityController extends AbstractController
         ]);
     }
     /**
-     * @Route("/search/events",name="searchevents"), methods={"PUT"})
+     * @Route("/search/events/{page?1}",name="searchevents"), methods={"POST"})
      */
-    public function searchevents(Request $request, Evenement $event=null): Response
+    public function searchevents(Request $request, Evenement $event=null, $page): Response
     {
         $form = $this->createForm(FindEventsType::class,$event);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() ) {
+        if(($form->isSubmitted()) ) {
             $data = $form->getData();
-            dd($data);
+            $eventrepository = $this->getDoctrine()->getRepository('App:Evenement');
+            $events = $eventrepository->recherche($data);
         }
         else{
             $eventrepository = $this->getDoctrine()->getRepository('App:Evenement');
-            $events = $eventrepository->findBy([], [], 9);
+            $events = $eventrepository->findAll();
+        }
+
+        //PAGINATION
+        $offset = 12;
+        $maxpage = count($events)/3;
+        $events2= null;
+        $j=1;
+        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+        {
+            if(isset($events[$i])) {
+                $events2[$j] = $events[$i];
+                $j++;
+            }
         }
 
         return $this->render('search/findEvents.html.twig', [
             'eventOptions' => $form->createView(),
-            'events' => $events,
+            'events' => $events2,
+            'page'=> $page,
+            'maxpage'=> $maxpage,
         ]);
 
 

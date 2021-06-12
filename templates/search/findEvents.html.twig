@@ -30,3 +30,16 @@
     {% endfor %}
 
 {% endblock %}
+
+{% block Pagination %}
+    <div>
+        <ul class="pagination">
+            {% if page >1 %}
+                <li><a class="page-link" href="{{ path('searchevents', {'page': page-1 }) }}">&laquo; Previous</a></li>
+            {% endif %}
+            {% if page < maxpage %}
+                <li><a class="page-link" href="{{ path('searchevents', {'page': page+1 }) }}">Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

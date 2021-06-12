@@ -78,6 +78,11 @@ class Evenement
      */
     private $number;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -223,6 +228,18 @@ class Evenement
     public function setNumber(int $number): self
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

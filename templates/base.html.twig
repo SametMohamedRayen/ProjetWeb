@@ -42,8 +42,8 @@
                     <b> Account</b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Modify Account</a>
-                    <a class="dropdown-item" href="#">See your activities</a>
+                    <a class="dropdown-item" href="{{ path('account') }}">Account</a>
+                    <a class="dropdown-item" href="{{ path('account.activities') }}">Jawek</a>
                     <a class="dropdown-item" href="#">LogOut</a>
                 </div>
             </div>
@@ -51,6 +51,23 @@
         </ul>
     </div>
 </nav>
-        {% block body %}{% endblock %}
+{% for  message in  app.session.flashBag.get('info') %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for  message in  app.session.flashBag.get('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for  message in  app.session.flashBag.get('error') %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% block body %}{% endblock %}
+
     </body>
 </html>

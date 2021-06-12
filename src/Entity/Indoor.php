@@ -63,6 +63,11 @@ class Indoor
      */
     private $target = [];
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -172,6 +177,18 @@ class Indoor
     public function setTarget(array $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

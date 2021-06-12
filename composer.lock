@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38bc5cb02cba35a5a815184cf30d6ae3",
+    "content-hash": "d80405700ecbdb66ade0db2dc94b3ea8",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -2363,17 +2363,43 @@
             "time": "2020-08-25T19:10:18+00:00"
         },
         {
-            "name": "symfony/asset",
-            "version": "v5.2.7",
+            "name": "symfony/apache-pack",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/asset.git",
-                "reference": "e6676acfabf011dca2beaa5f9b8d519c8aea2870"
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/asset/zipball/e6676acfabf011dca2beaa5f9b8d519c8aea2870",
-                "reference": "e6676acfabf011dca2beaa5f9b8d519c8aea2870",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "shasum": ""
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/apache-pack/issues",
+                "source": "https://github.com/symfony/apache-pack/tree/master"
+            },
+            "time": "2017-12-12T01:46:35+00:00"
+        },
+        {
+            "name": "symfony/asset",
+            "version": "v5.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/asset.git",
+                "reference": "c65584ca108c9e51c80cc49ebdcb47dfd995431c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/c65584ca108c9e51c80cc49ebdcb47dfd995431c",
+                "reference": "c65584ca108c9e51c80cc49ebdcb47dfd995431c",
                 "shasum": ""
             },
             "require": {
@@ -2413,7 +2439,7 @@
             "description": "Manages URL generation and versioning of web assets such as CSS stylesheets, JavaScript files and image files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/asset/tree/v5.2.7"
+                "source": "https://github.com/symfony/asset/tree/v5.2.10"
             },
             "funding": [
                 {
@@ -2429,7 +2455,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-07T16:07:52+00:00"
+            "time": "2021-05-26T17:40:38+00:00"
         },
         {
             "name": "symfony/cache",
@@ -4021,16 +4047,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.2.8",
+            "version": "v5.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "e8fbbab7c4a71592985019477532629cb2e142dc"
+                "reference": "a148e5d6e69562a9ec0ab3bcf35c02585114cbce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/e8fbbab7c4a71592985019477532629cb2e142dc",
-                "reference": "e8fbbab7c4a71592985019477532629cb2e142dc",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a148e5d6e69562a9ec0ab3bcf35c02585114cbce",
+                "reference": "a148e5d6e69562a9ec0ab3bcf35c02585114cbce",
                 "shasum": ""
             },
             "require": {
@@ -4074,7 +4100,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v5.2.8"
+                "source": "https://github.com/symfony/http-foundation/tree/v5.2.10"
             },
             "funding": [
                 {
@@ -4090,7 +4116,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-07T13:41:16+00:00"
+            "time": "2021-05-26T12:52:38+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -6857,16 +6883,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v5.2.9",
+            "version": "v5.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "3c16d6c2036190f9033643057168a6d8c5617886"
+                "reference": "8b882f5a50df87ee194ccd8d7e4ebf5cabebad5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/3c16d6c2036190f9033643057168a6d8c5617886",
-                "reference": "3c16d6c2036190f9033643057168a6d8c5617886",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/8b882f5a50df87ee194ccd8d7e4ebf5cabebad5e",
+                "reference": "8b882f5a50df87ee194ccd8d7e4ebf5cabebad5e",
                 "shasum": ""
             },
             "require": {
@@ -6946,7 +6972,7 @@
             "description": "Provides tools to validate values",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/validator/tree/v5.2.9"
+                "source": "https://github.com/symfony/validator/tree/v5.2.10"
             },
             "funding": [
                 {
@@ -6962,7 +6988,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-17T20:21:27+00:00"
+            "time": "2021-05-26T17:40:38+00:00"
         },
         {
             "name": "symfony/var-dumper",

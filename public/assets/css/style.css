@@ -21,7 +21,7 @@
 }
 
 
-/*.map
+.map
 {
     margin-left: 683px;
     height: 888px;
@@ -29,16 +29,16 @@
     position: absolute;
     transform: translate(0,-550px);
 
-}*/
+}
 
 .span1
 {
     padding-left: 15px;
 }
 
-.sect2
+.secttwo
 {
-    background: white;
+    background-color: white;
 }
 
 .lis:hover

@@ -11,9 +11,15 @@
    {% block messages %}
    {% for message in app.session.flashbag.get('info') %}
    {% endfor %}
-   {% for message in app.session.flashbag.get('error') %}
+   {% for message in app.session.flashbag.get('fail') %}
+       <div class="alert alert-dismissible alert-danger">
+           {{ message }}
+       </div>
    {% endfor %}
    {% for message in app.session.flashbag.get('success') %}
+       <div class="alert alert-dismissible alert-success">
+           {{ message }}
+       </div>
    {% endfor %}
    {% endblock %}
 

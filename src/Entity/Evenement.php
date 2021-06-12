@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints;
 
 /**
  * @ORM\Table(name="event")
@@ -260,5 +262,15 @@ class Evenement
         $this->user = $user;
 
         return $this;
+    }
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('name',new Constraints\NotBlank() );
+
+        $metadata->addPropertyConstraints('age_min',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('age_max',[new Constraints\NotBlank()]);
+
+        $metadata->addPropertyConstraints('price_min',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('price_max',[new Constraints\NotBlank()]);
     }
 }

@@ -45,13 +45,13 @@ body
 #menu
 {
     visibility: hidden;
+    width: 100px;
 }
 
-#change_color
+#changecolor
 {
-    width: fit-content;
+    width:200px;
 }
-
 
 
 

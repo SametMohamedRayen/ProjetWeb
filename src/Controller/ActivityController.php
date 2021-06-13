@@ -57,9 +57,21 @@ class ActivityController extends AbstractController
                 $form->get('price_max')->getData()
             ))
             {
-                //FIX IMAGE DIRECTORY
-                $img =$form->get('photo')->getData();
-                $img->move('../../public/temp',uniqid());
+                $img = $form->get('photo')->getData();
+                if ($img) {
+                    $imgname = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newimgname = $imgname.'-'.uniqid().'.'.$img->guessExtension();
+                    try {
+                        $img->move(
+                            '%kernel.root_dir%/../assets/temp/indoor/',
+                            $newimgname
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('fail','Error while trasnferring the picture uploaded !');
+                    }
+                }
+                $ind->setPhoto('assets/temp/event/'.$newimgname);
+
                 //COLOR VARIABLE
                 $ind->setUser('ab'); //Insert here session variable for the user logged in
                 $manager->persist($ind);
@@ -90,6 +102,23 @@ class ActivityController extends AbstractController
             ))
             {
                 //COLOR VARIABLE
+
+
+                $img = $form->get('photo')->getData();
+                if ($img) {
+                    $imgname = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newimgname = $imgname.'-'.uniqid().'.'.$img->guessExtension();
+                    try {
+                        $img->move(
+                            '%kernel.root_dir%/../assets/temp/event/',
+                            $newimgname
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('fail','Error while trasnferring the picture uploaded !');
+                    }
+                    }
+                $event->setPhoto('assets/temp/event/'.$newimgname);
+
                 $event->setUser('ab'); //Insert here session variable for the user logged in
                 $manager->persist($event);
                 $manager->flush();
@@ -99,12 +128,12 @@ class ActivityController extends AbstractController
         return($this->render('activity/eventForm.html.twig',[
             'event'=>$event,
             'form'=>$form->createView(),
-            'what'=>'Event'
+            'what'=>'event'
         ]));
     }
 
     /**
-     * @Route("/inoout/evnend/end",name="end")
+     * @Route("/inoout/evnend/end/",name="end")
      */
     public function formend(EntityManagerInterface $manager,Request $request)
     {
@@ -119,7 +148,22 @@ class ActivityController extends AbstractController
                 $form->get('price_max')->getData()
             ))
             {
-                //COLOR VARIABLE
+                //COL
+                $img = $form->get('photo')->getData();
+                if ($img) {
+                    $imgname = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newimgname = $imgname.'-'.uniqid().'.'.$img->guessExtension();
+                    try {
+                        $img->move(
+                            '%kernel.root_dir%/../assets/temp/endroit/',
+                            $newimgname
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('fail','Error while trasnferring the picture uploaded !');
+                    }
+                }
+                $endroit->setPhoto('assets/temp/event/'.$newimgname);
+
                 $endroit->setUser('ab'); //Insert here session variable for the user logged in
                 $manager->persist($endroit);
                 $manager->flush();
@@ -145,7 +189,4 @@ class ActivityController extends AbstractController
         }
         return true;
     }
-
-
-
 }

@@ -65,6 +65,8 @@ class Compte implements UserInterface
 
 
     private $roles = array();
+
+
     public function getRoles() {
         if (empty($this->roles)) {
             return ['ROLE_USER'];

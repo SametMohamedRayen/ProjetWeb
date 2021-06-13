@@ -24,6 +24,9 @@ security:
           logout:
             path: /logout
             target: /
+          guard:
+             authenticators:
+                - App\Security\UserAuthentificatorAuthenticator
 
 
             # activate different ways to authenticate

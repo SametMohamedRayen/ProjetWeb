@@ -14,11 +14,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 /**
  * @Route("/account")
  */
 class AccountController extends AbstractController
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
 
 
@@ -26,16 +33,21 @@ class AccountController extends AbstractController
      * @Route("/",name="account")
      */
     public function index(): Response
-    {
+    {if ($this->security->isGranted('ROLE_USER')) {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
         $row = $repository->findOneByAdresseMail(11); //FIX
         return $this->render('account/index.html.twig', ['row'=>$row
         ]);
+    }
+    else{
+        return $this->redirectToRoute('app_login');
+    }
 
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/modifyaccount",name="modifyaccount")
      */
     public function modifyaccount(EntityManagerInterface $manager,Request $request)
@@ -77,6 +89,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route ("/deleteaccount",name="deleteaccount")
      */
     public function deleteaccount(EntityManagerInterface $manager)
@@ -92,6 +105,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     *  @IsGranted("ROLE_USER")
      * @Route ("/deleteAccountConfirm",name="deleteAccountConfirm")
      */
 
@@ -105,6 +119,7 @@ class AccountController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/events/{page?1}",name="account.activities.event")
      */
     public function showEvents($page): Response
@@ -145,6 +160,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/places/{page?1}",name="account.activities.places")
      */
     public function showPlaces($page): Response
@@ -184,6 +200,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/indoor/{page?1}",name="account.activities.indoor")
      */
     public function showIndoor($page): Response
@@ -223,6 +240,7 @@ class AccountController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities",name="account.activities.choice")
      */
     public function chooseActivities(): Response
@@ -233,6 +251,7 @@ class AccountController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/delete/{type}/{id}",name="account.activities.delete")
      */
     public function deleteActivity($type ,$id ,EntityManagerInterface $manager): Response
@@ -264,6 +283,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/event/{id}",name="account.event.modify")
      */
     public function modifyEvent($id): Response
@@ -273,6 +293,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/place/{id}",name="account.place.modify")
      */
     public function modifyPlace($id): Response
@@ -281,6 +302,7 @@ class AccountController extends AbstractController
 
     }
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/indoor/{id}",name="account.indoor.modify")
      */
     public function modifyIndoor($id): Response

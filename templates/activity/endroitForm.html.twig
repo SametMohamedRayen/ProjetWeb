@@ -6,25 +6,25 @@
 {%  block body %}
     <div class="container">
     <div class="jumbotron">
-        <h2>Ajout d'un plan</h2>
+        <h2>Ajout d'un {{ what }}</h2>
             <br>
-            <span  id="change_color">
-                <div class="circle"></div>
-                <legend>My plan</legend>
-            </span>
-            <span id="menu">
-                <div class="circle" id="red"></div>
-                <div class="circle" id="blue"></div>
-                <div class="circle" id="green"></div>
-                <div class="circle" id="yellow"></div>
-            </span>
+            <div  id="changecolor">
+                <span class="circle"></span>
+                <legend style="width: 200px;">My {{ what }}</legend>
+            </div>
+            <div id="menu">
+                <span class="circle" id="red"></span>
+                <span class="circle" id="blue"></span>
+                <span class="circle" id="green"></span>
+                <span class="circle" id="yellow"></span>
+            </div>
+        <div id="ws">
+        </div>
             <br>
             {% block form %}{{ form(form) }}{% endblock %}
             <br>
-
-            <button type="button" class="btn btn-primary">Submit</button>
         </div>
     </div>
 
-    <script src="{{ asset('assets/js/plans.js') }}"></script>
+    <script src="{{ asset('assets/js/planss.js') }}"></script>
 {% endblock %}

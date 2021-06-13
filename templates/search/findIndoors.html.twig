@@ -1,0 +1,45 @@
+{% extends 'search/findPlanslayout.html.twig' %}
+
+{% block other1link%} {{ path('searchplaces')}} {% endblock %}
+{% block other1 %} Places {% endblock %}
+
+{% block other2link%} {{ path('searchevents')}} {% endblock %}
+{% block other2 %} Events {% endblock %}
+
+{% block name %} Find an indoor activity {% endblock %}
+{% block activity %} an indoor activity {% endblock %}
+{% block form %}
+    {{ form(indoorOptions) }}
+{% endblock %}
+
+{% block card%}
+    <!--Event Card-->
+    {% for indoor in indoors %}
+        <div class="col-6 col-md-6 col-lg-4 mb-3">
+            <div class="col">
+                <div class="card">
+                    <img src="{{asset('assets/images/eventsheader.jpg')}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5> {{ indoor.name }}</h5>
+                        <p> {{ indoor.description }}</p>
+                        <a type="button" class="btn btn-dark rounded" href="{{ path('indoordetails', {'id': indoor.id }) }}">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block Pagination %}
+    <div>
+        <ul class="pagination">
+            {% if page >1 %}
+                <li><a class="page-link" href="{{ path('searchindoors', {'page': page-1 }) }}">&laquo; Previous</a></li>
+            {% endif %}
+            {% if page < maxpage %}
+                <li><a class="page-link" href="{{ path('searchindoors', {'page': page+1 }) }}">Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

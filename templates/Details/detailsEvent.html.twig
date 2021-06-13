@@ -1,0 +1,17 @@
+{% extends 'details/detailslayout.html.twig' %}
+{% block title %} {{ event.name }}{% endblock %}
+{% block card %}
+    <h5 class="card-title">{{event.name }} </h5>
+    <p class="card-text">Description : {{event.description }} </p>
+    <p class="card-text">Age min : {{event.agemin }} </p>
+    <p class="card-text">Age max : {{event.agemax }}</p>
+    <p class="card-text">Eco friendly : {{event.ecofriendly }}</p>
+    <p class="card-text">Target :  </p>
+    <p class="card-text">Price : {{event.price }}</p>
+    <p class="card-text">Date : {{event.date|date("m/d/Y") }}</p>
+    <p class="card-text">Duration : {{event.duration }}</p>
+    <p class="card-text">Location : {{event.location }}</p>
+    <p class="card-text">Link : {{event.link }}</p>
+    <p class="card-text">Number :{{event.number }} </p>
+    <p class="card-text"><small class="text-muted">Added By: {{event.user }} </small></p>
+{% endblock %}

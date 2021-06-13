@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\IndoorRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints;
 
 /**
  * @ORM\Table(name="indoor")
@@ -59,12 +61,13 @@ class Indoor
     private $price_max;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      */
-    private $target = [];
+    private $target;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Compte",inversedBy="adresseMail")
      */
     private $user;
 
@@ -169,12 +172,12 @@ class Indoor
         return $this;
     }
 
-    public function getTarget(): ?array
+    public function getTarget(): ?string
     {
         return $this->target;
     }
 
-    public function setTarget(array $target): self
+    public function setTarget(string $target): self
     {
         $this->target = $target;
 
@@ -191,5 +194,16 @@ class Indoor
         $this->user = $user;
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('name',new Constraints\NotBlank() );
+
+        $metadata->addPropertyConstraints('age_min',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('age_max',[new Constraints\NotBlank()]);
+
+        $metadata->addPropertyConstraints('price_min',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('price_max',[new Constraints\NotBlank()]);
     }
 }

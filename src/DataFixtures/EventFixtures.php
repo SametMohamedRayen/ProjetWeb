@@ -19,8 +19,7 @@ class EventFixtures extends Fixture
             $event->setAgeMin(20);
             $event->setEcoFriendly("true");
             $event->setPhoto("");
-            $event->setPriceMax($i);
-            $event->setPriceMin($i);
+            $event->setPrice($i);
             $event->setDate($time);
             $event->setDuration(4);
             $event->setLink("");

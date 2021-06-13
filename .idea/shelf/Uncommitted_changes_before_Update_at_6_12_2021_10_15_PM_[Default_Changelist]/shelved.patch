@@ -1,0 +1,233 @@
+Index: src/Repository/EndroitRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Repository;\n\nuse App\\Entity\\Endroit;\nuse Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository;\nuse Doctrine\\Persistence\\ManagerRegistry;\n\n/**\n * @method Endroit|null find($id, $lockMode = null, $lockVersion = null)\n * @method Endroit|null findOneBy(array $criteria, array $orderBy = null)\n * @method Endroit[]    findAll()\n * @method Endroit[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)\n */\nclass EndroitRepository extends ServiceEntityRepository\n{\n    public function __construct(ManagerRegistry $registry)\n    {\n        parent::__construct($registry, Endroit::class);\n    }\n\n    public function recherche($obj){\n        /*\n         -description: \"1\"\n             -number: 1*/\n        $criteres = [\n            \"name\" => $obj->getName(),\n            \"age_min\"=> $obj->getAgeMin(),\n            \"age_max\" => $obj->getAgeMax(),\n            \"eco_friendly\"=>$obj->getEcoFriendly(),\n            \"price_max\"=> $obj->getPriceMax(),\n            \"price_min\" => $obj->getPriceMin(),\n            \"location\" => $obj->getLocation(),\n            \"open\" => $obj->getOpen(),\n            \"close\" => $obj->getClose(),\n\n\n        ];\n\n        $result = $this->createQueryBuilder('e');\n        foreach ($criteres as $critere => $valeur ){\n            if($valeur !=null){\n                $result->andWhere('e.'.$critere.' = :'.$critere);\n                $result->setParameter($critere,$valeur);\n            }\n        }\n\n        return $result->getQuery()\n            ->getResult();\n\n    }\n\n\n\n\n    // /**\n    //  * @return Endroit[] Returns an array of Endroit objects\n    //  */\n    /*\n    public function findByExampleField($value)\n    {\n        return $this->createQueryBuilder('e')\n            ->andWhere('e.exampleField = :val')\n            ->setParameter('val', $value)\n            ->orderBy('e.id', 'ASC')\n            ->setMaxResults(10)\n            ->getQuery()\n            ->getResult()\n        ;\n    }\n    */\n\n    /*\n    public function findOneBySomeField($value): ?Endroit\n    {\n        return $this->createQueryBuilder('e')\n            ->andWhere('e.exampleField = :val')\n            ->setParameter('val', $value)\n            ->getQuery()\n            ->getOneOrNullResult()\n        ;\n    }\n    */\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Repository/EndroitRepository.php b/src/Repository/EndroitRepository.php
+--- a/src/Repository/EndroitRepository.php	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/src/Repository/EndroitRepository.php	(date 1623531951139)
+@@ -20,9 +20,7 @@
+     }
+ 
+     public function recherche($obj){
+-        /*
+-         -description: "1"
+-             -number: 1*/
++
+         $criteres = [
+             "name" => $obj->getName(),
+             "age_min"=> $obj->getAgeMin(),
+@@ -30,18 +28,32 @@
+             "eco_friendly"=>$obj->getEcoFriendly(),
+             "price_max"=> $obj->getPriceMax(),
+             "price_min" => $obj->getPriceMin(),
+-            "location" => $obj->getLocation(),
+             "open" => $obj->getOpen(),
+             "close" => $obj->getClose(),
+-
+-
+         ];
+ 
++        dd($criteres);
+         $result = $this->createQueryBuilder('e');
+         foreach ($criteres as $critere => $valeur ){
+             if($valeur !=null){
+-                $result->andWhere('e.'.$critere.' = :'.$critere);
++                if($critere == "price_min"){
++                    $result->andWhere('e.price_min >= :'.$critere);
++                }
++                elseif ($critere=="price_max"){
++                    $result->andWhere('e.price_max <= :'.$critere);
++                }
++                elseif ($critere=="age_min"){
++                    $result->andWhere('e.age_min >= :'.$critere);
++                }
++                elseif ($critere=="age_max"){
++                    $result->andWhere('e.age_max <= :'.$critere);
++                }
++                else{
++                    $result->andWhere('e.'.$critere.' = :'.$critere);
++                }
++
+                 $result->setParameter($critere,$valeur);
++
+             }
+         }
+ 
+Index: src/Form/FindPlacesType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Endroit;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass FindPlacesType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('name' , TextType::class,array('required' => false) )\n            ->add('age_min', IntegerType::class,array('required' => false))\n            ->add('age_max',IntegerType::class,array('required' => false))\n            ->add('eco_friendly')\n            ->add('price_min', MoneyType::class,array('required' => false , \"currency\"=>\"TND\"))\n            ->add('price_max', MoneyType::class,array('required' => false , \"currency\"=>\"TND\"))\n            ->add('target')\n            ->add('location')\n            ->add('open', TimeType::class ,array('required' => false))\n            ->add('close', TimeType::class , array('required' => false))\n            ->add('Search', SubmitType::class, [\n                'attr' => ['label' => 'Search']\n            ])\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => Endroit::class,\n        ]);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Form/FindPlacesType.php b/src/Form/FindPlacesType.php
+--- a/src/Form/FindPlacesType.php	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/src/Form/FindPlacesType.php	(date 1623532119824)
+@@ -25,8 +25,8 @@
+             ->add('price_max', MoneyType::class,array('required' => false , "currency"=>"TND"))
+             ->add('target')
+             ->add('location')
+-            ->add('open', TimeType::class ,array('required' => false))
+-            ->add('close', TimeType::class , array('required' => false))
++            ->add('open', TimeType::class ,array('required' => false ))
++            ->add('close', TimeType::class, array('required' => false))
+             ->add('Search', SubmitType::class, [
+                 'attr' => ['label' => 'Search']
+             ])
+@@ -37,6 +37,7 @@
+     {
+         $resolver->setDefaults([
+             'data_class' => Endroit::class,
++
+         ]);
+     }
+ }
+Index: src/Form/FindEventsType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Evenement;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass FindEventsType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('age_min',IntegerType::class,array('required' => false))\n            ->add('age_max',IntegerType::class,array('required' => false))\n            ->add('description', HiddenType::class,array('required'=>false))\n            ->add('eco_friendly')\n            ->add('name' , TextType::class,array('required' => false))\n            ->add('price_max', MoneyType::class,array('required' => false , \"currency\"=>\"TND\"))\n            ->add('price_min', MoneyType::class,array('required' => false , \"currency\"=>\"TND\"))\n            ->add('target')\n            ->add('date', DateType::class, array('required'=>false,  'widget' => 'single_text',  'empty_data' => null))\n            ->add('duration' , IntegerType::class, array('required'=>false))\n            ->add('number', IntegerType::class, array('required'=>false))\n            ->add('Search', SubmitType::class, [\n                'attr' => ['label' => 'Search']\n            ])\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => Evenement::class,\n        ]);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Form/FindEventsType.php b/src/Form/FindEventsType.php
+--- a/src/Form/FindEventsType.php	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/src/Form/FindEventsType.php	(date 1623532279902)
+@@ -8,7 +8,6 @@
+ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+@@ -21,9 +20,8 @@
+         $builder
+             ->add('age_min',IntegerType::class,array('required' => false))
+             ->add('age_max',IntegerType::class,array('required' => false))
+-            ->add('description', HiddenType::class,array('required'=>false))
+             ->add('eco_friendly')
+-            ->add('name' , TextType::class,array('required' => false))
++            ->add('name' ,TextType::class,array('required' => false))
+             ->add('price_max', MoneyType::class,array('required' => false , "currency"=>"TND"))
+             ->add('price_min', MoneyType::class,array('required' => false , "currency"=>"TND"))
+             ->add('target')
+Index: src/Repository/EvenementRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Repository;\n\nuse App\\Entity\\Evenement;\nuse Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository;\nuse Doctrine\\Persistence\\ManagerRegistry;\n\n/**\n * @method Evenement|null find($id, $lockMode = null, $lockVersion = null)\n * @method Evenement|null findOneBy(array $criteria, array $orderBy = null)\n * @method Evenement[]    findAll()\n * @method Evenement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)\n */\nclass EvenementRepository extends ServiceEntityRepository\n{\n    public function __construct(ManagerRegistry $registry)\n    {\n        parent::__construct($registry, Evenement::class);\n    }\n\n    public function recherche($obj){\n       /*\n        -description: \"1\"\n            -number: 1*/\n        $criteres = [\n            \"name\" => $obj->getName(),\n            \"age_min\"=> $obj->getAgeMin(),\n            \"age_max\" => $obj->getAgeMax(),\n            \"eco_friendly\"=>$obj->getEcoFriendly(),\n            \"date\"=>$obj->getDate(),\n            \"price_max\"=> $obj->getPriceMax(),\n            \"price_min\"=> $obj->getPriceMin(),\n            \"duration\"=> $obj->getDuration(),\n            \"number\" => $obj->getNumber(),\n        ];\n\n        $result = $this->createQueryBuilder('e');\n        foreach ($criteres as $critere => $valeur ){\n            if($valeur !=null){\n                if($critere == \"price_min\"){\n                    $result->andWhere('e.'.$critere.' >= :'.$critere);\n                }\n                elseif ($critere==\"price_max\"){\n                    $result->andWhere('e.'.$critere.' <= :'.$critere);\n                }\n                else{\n                    $result->andWhere('e.'.$critere.' = :'.$critere);\n                }\n\n                $result->setParameter($critere,$valeur);\n\n            }\n        }\n\n            return $result->getQuery()\n            ->getResult();\n\n    }\n\n\n    // /**\n    //  * @return Evenement[] Returns an array of Evenement objects\n    //  */\n    /*\n    public function findByExampleField($value)\n    {\n        return $this->createQueryBuilder('e')\n            ->andWhere('e.exampleField = :val')\n            ->setParameter('val', $value)\n            ->orderBy('e.id', 'ASC')\n            ->setMaxResults(10)\n            ->getQuery()\n            ->getResult()\n        ;\n    }\n    */\n\n    /*\n    public function findOneBySomeField($value): ?Evenement\n    {\n        return $this->createQueryBuilder('e')\n            ->andWhere('e.exampleField = :val')\n            ->setParameter('val', $value)\n            ->getQuery()\n            ->getOneOrNullResult()\n        ;\n    }\n    */\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Repository/EvenementRepository.php b/src/Repository/EvenementRepository.php
+--- a/src/Repository/EvenementRepository.php	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/src/Repository/EvenementRepository.php	(date 1623524015236)
+@@ -42,6 +42,12 @@
+                     $result->andWhere('e.'.$critere.' >= :'.$critere);
+                 }
+                 elseif ($critere=="price_max"){
++                    $result->andWhere('e.price <= :'.$critere);
++                }
++                elseif ($critere=="age_min"){
++                    $result->andWhere('e.price >= :'.$critere);
++                }
++                elseif ($critere=="age_max"){
+                     $result->andWhere('e.'.$critere.' <= :'.$critere);
+                 }
+                 else{
+Index: src/Entity/Evenement.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Entity;\n\nuse App\\Repository\\EvenementRepository;\nuse Doctrine\\ORM\\Mapping as ORM;\n\n/**\n * @ORM\\Table(name=\"event\")\n * @ORM\\Entity(repositoryClass=EvenementRepository::class)\n */\nclass Evenement\n{\n    /**\n     * @ORM\\Id\n     * @ORM\\GeneratedValue\n     * @ORM\\Column(type=\"integer\")\n     */\n    private $id;\n\n    /**\n     * @ORM\\Column(type=\"integer\")\n     */\n    private $age_min;\n\n    /**\n     * @ORM\\Column(type=\"integer\")\n     */\n    private $age_max;\n\n    /**\n     * @ORM\\Column(type=\"string\", length=500)\n     */\n    private $description;\n\n    /**\n     * @ORM\\Column(type=\"boolean\")\n     */\n    private $eco_friendly;\n\n    /**\n     * @ORM\\Column(type=\"string\", length=50)\n     */\n    private $name;\n\n    /**\n     * @ORM\\Column(type=\"string\", length=100)\n     */\n    private $photo;\n\n    /**\n     * @ORM\\Column(type=\"float\")\n     */\n    private $price_max;\n\n    /**\n     * @ORM\\Column(type=\"float\")\n     */\n    private $price_min;\n\n    /**\n     * @ORM\\Column(type=\"array\")\n     */\n    private $target = [];\n\n    /**\n     * @ORM\\Column(type=\"date\")\n     */\n    private $date;\n\n    /**\n     * @ORM\\Column(type=\"integer\")\n     */\n    private $duration;\n\n    /**\n     * @ORM\\Column(type=\"string\", length=500)\n     */\n    private $link;\n\n    /**\n     * @ORM\\Column(type=\"integer\")\n     */\n    private $number;\n\n    /**\n     * @ORM\\Column(type=\"string\", length=255)\n     */\n    private $user;\n\n    public function getId(): ?int\n    {\n        return $this->id;\n    }\n\n    public function getAgeMin(): ?string\n    {\n        return $this->age_min;\n    }\n\n    public function setAgeMin(string $age_min): self\n    {\n        $this->age_min = $age_min;\n\n        return $this;\n    }\n\n    public function getAgeMax(): ?int\n    {\n        return $this->age_max;\n    }\n\n    public function setAgeMax(int $age_max): self\n    {\n        $this->age_max = $age_max;\n\n        return $this;\n    }\n\n    public function getDescription(): ?string\n    {\n        return $this->description;\n    }\n\n    public function setDescription(string $description): self\n    {\n        $this->description = $description;\n\n        return $this;\n    }\n\n    public function getEcoFriendly(): ?bool\n    {\n        return $this->eco_friendly;\n    }\n\n    public function setEcoFriendly(bool $eco_friendly): self\n    {\n        $this->eco_friendly = $eco_friendly;\n\n        return $this;\n    }\n\n    public function getName(): ?string\n    {\n        return $this->name;\n    }\n\n    public function setName(string $name): self\n    {\n        $this->name = $name;\n\n        return $this;\n    }\n\n    public function getPhoto(): ?string\n    {\n        return $this->photo;\n    }\n\n    public function getTarget(): ?array\n    {\n        return $this->target;\n    }\n\n    public function setPhoto(string $photo): self\n    {\n        $this->photo = $photo;\n\n        return $this;\n    }\n\n\n    public function getPriceMax(): ?float\n    {\n        return $this->price_max;\n    }\n\n    public function setPriceMax(float $price): self\n    {\n        $this->price = $price_max;\n\n        return $this;\n    }\n\n    public function getPriceMin(): ?float\n    {\n        return $this->price_min;\n    }\n\n    public function setPriceMin(float $price): self\n    {\n        $this->price = $price_min;\n\n        return $this;\n    }\n\n    public function setTarget(array $target): self\n    {\n        $this->target = $target;\n\n        return $this;\n    }\n\n    public function getDate(): ?\\DateTimeInterface\n    {\n        return $this->date;\n    }\n\n    public function setDate(\\DateTimeInterface $date): self\n    {\n        $this->date = $date;\n\n        return $this;\n    }\n\n    public function getDuration(): ?int\n    {\n        return $this->duration;\n    }\n\n    public function setDuration(int $duration): self\n    {\n        $this->duration = $duration;\n\n        return $this;\n    }\n\n    public function getLink(): ?string\n    {\n        return $this->link;\n    }\n\n    public function setLink(string $link): self\n    {\n        $this->link = $link;\n\n        return $this;\n    }\n\n    public function getNumber(): ?int\n    {\n        return $this->number;\n    }\n\n    public function setNumber(int $number): self\n    {\n        $this->number = $number;\n\n        return $this;\n    }\n\n    public function getUser(): ?string\n    {\n        return $this->user;\n    }\n\n    public function setUser(string $user): self\n    {\n        $this->user = $user;\n\n        return $this;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Entity/Evenement.php b/src/Entity/Evenement.php
+--- a/src/Entity/Evenement.php	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/src/Entity/Evenement.php	(date 1623524299239)
+@@ -51,12 +51,7 @@
+     /**
+      * @ORM\Column(type="float")
+      */
+-    private $price_max;
+-
+-    /**
+-     * @ORM\Column(type="float")
+-     */
+-    private $price_min;
++    private $price;
+ 
+     /**
+      * @ORM\Column(type="array")
+@@ -170,34 +165,21 @@
+         return $this;
+     }
+ 
+-
+-    public function getPriceMax(): ?float
++    public function getPrice(): ?float
+     {
+-        return $this->price_max;
++        return $this->price;
+     }
+ 
+-    public function setPriceMax(float $price): self
++    public function setPrice(float $price): self
+     {
+-        $this->price = $price_max;
++        $this->price = $price;
+ 
+         return $this;
+     }
+ 
+-    public function getPriceMin(): ?float
+-    {
+-        return $this->price_min;
+-    }
+-
+-    public function setPriceMin(float $price): self
++    public function setPriceMax(float $price_max): self
+     {
+-        $this->price = $price_min;
+-
+-        return $this;
+-    }
+-
+-    public function setTarget(array $target): self
+-    {
+-        $this->target = $target;
++        $this->price = $price_max;
+ 
+         return $this;
+     }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d767fe19-65d8-4db9-bff2-b162f9d5878f\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Controller/SearchActivityController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Controller/SearchActivityController.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/DataFixtures/EventFixtures.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/DataFixtures/EventFixtures.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Entity/Endroit.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entity/Endroit.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Entity/Evenement.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entity/Evenement.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Form/FindEventsType.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Form/FindEventsType.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Form/FindPlacesType.php\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Repository/EndroitRepository.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Repository/EndroitRepository.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Repository/EvenementRepository.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Repository/EvenementRepository.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Repository/EvennementRepository.php\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/templates/search/findPlaces.html.twig\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/search/findPlaces.html.twig\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/templates/search/findPlanslayout.html.twig\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/search/findPlanslayout.html.twig\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-code\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/framework-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-eventmanager\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dom-crawler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-link\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/deprecations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/intl\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/event-manager\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/dbal\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/monolog-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/orm\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/doctrine-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/sql-formatter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dependency-injection\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/phpunit-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/collections\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/config\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/persistence\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-http\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/annotations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/migrations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/debug-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/common\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/filesystem\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php73\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-profiler-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/maker-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-guard\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/browser-kit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/notifier\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/yaml\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/serializer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dotenv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/asset\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/twig/extra-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/expression-language\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sensio/framework-extra-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/type-resolver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-common\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/form\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-exporter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/monolog-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/webmozart/assert\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-core\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php80\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-info\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-access\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-csrf\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/link\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/stopwatch\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/flex\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/options-resolver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/data-fixtures\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1rik0qQwE0i2KHANumfhXsI7rGk\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"reference.webide.settings.project.settings.php\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Ines\\Desktop\\ProjetSymfo\\templates\\search_activity\" />\r\n      <recent name=\"C:\\Users\\rayen\\OneDrive\\Documents\\ProjetSiteActivités\\ProjetSiteActivité\\templates\" />\r\n      <recent name=\"C:\\Users\\rayen\\OneDrive\\Documents\\ProjetSiteActivités\\ProjetSiteActivité\\templates\\first\" />\r\n      <recent name=\"C:\\Users\\rayen\\OneDrive\\Documents\\ProjetSiteActivités\\ProjetSiteActivité\\public\\assets\\images\" />\r\n      <recent name=\"C:\\Users\\rayen\\OneDrive\\Documents\\ProjetSiteActivités\\ProjetSiteActivité\\public\\assets\\js\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d767fe19-65d8-4db9-bff2-b162f9d5878f\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1619466134678</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1619466134678</updated>\r\n      <workItem from=\"1619466148863\" duration=\"311000\" />\r\n      <workItem from=\"1620435569803\" duration=\"3186000\" />\r\n      <workItem from=\"1621953779456\" duration=\"21770000\" />\r\n      <workItem from=\"1622120543624\" duration=\"19879000\" />\r\n      <workItem from=\"1622211446304\" duration=\"447000\" />\r\n      <workItem from=\"1622239747612\" duration=\"9445000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7aea8967b80cc029b934a7840353e9aceb3cb044)
++++ b/.idea/workspace.xml	(date 1623522696550)
+@@ -6,17 +6,11 @@
+   <component name="ChangeListManager">
+     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/EventFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/EventFixtures.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entity/Endroit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Endroit.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Form/FindEventsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindEventsType.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Form/FindPlacesType.php" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Form/FindPlacesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindPlacesType.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Repository/EvennementRepository.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/search/findPlaces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlaces.html.twig" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />

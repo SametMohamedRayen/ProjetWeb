@@ -10,12 +10,6 @@
     font-size : 20px;
 }
 
-#navbar{
-    background-color: rgba(143, 119, 119, 0.486) !important;
-
-}
-
-
 #text{
     width:300px;
 }
@@ -36,7 +30,7 @@
     padding-left: 15px;
 }
 
-.sect2
+.secttwo
 {
     background-color: white;
 }
@@ -45,12 +39,11 @@
 {
     background-color: rgba(255, 255, 255, 0.6);
     width: 50%;
-    
 }
 
 /*NavBar*/
-#navbar{
-    background-color: rgba(143, 119, 119, 0.486) !important;
+#navbar2{
+   background-color: rgba(143, 119, 119, 0.9) !important;
 }
 
 /*JoinUs Section*/
@@ -72,4 +65,5 @@
 #joinus-text{
     width:300px;
 }
+
 

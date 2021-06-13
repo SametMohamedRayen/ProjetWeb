@@ -19,6 +19,54 @@ class EndroitRepository extends ServiceEntityRepository
         parent::__construct($registry, Endroit::class);
     }
 
+    public function recherche($obj){
+        $criteres = [
+            "name" => $obj->getName(),
+            "age_min"=> $obj->getAgeMin(),
+            "age_max" => $obj->getAgeMax(),
+            "eco_friendly"=>$obj->getEcoFriendly(),
+            "price_max"=> $obj->getPriceMax(),
+            "price_min" => $obj->getPriceMin(),
+            "open" => $obj->getOpen(),
+            "close" => $obj->getClose(),
+            "target" => $obj->getTarget(),
+        ];
+
+        $result = $this->createQueryBuilder('e');
+        foreach ($criteres as $critere => $valeur ){
+            if($valeur !=null){
+                if($critere == "price_min"){
+                    $result->andWhere('e.price_min >= :'.$critere);
+                }
+                elseif ($critere=="price_max"){
+                    $result->andWhere('e.price_max <= :'.$critere);
+                }
+                elseif ($critere=="age_min"){
+                    $result->andWhere('e.age_min >= :'.$critere);
+                }
+                elseif ($critere=="age_max"){
+                    $result->andWhere('e.age_max <= :'.$critere);
+                }
+                elseif($critere=="target"){
+
+                }
+                else{
+                    $result->andWhere('e.'.$critere.' = :'.$critere);
+                }
+
+                $result->setParameter($critere,$valeur);
+
+            }
+        }
+
+        return $result->getQuery()
+            ->getResult();
+
+    }
+
+
+
+
     // /**
     //  * @return Endroit[] Returns an array of Endroit objects
     //  */

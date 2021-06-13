@@ -1,15 +1,19 @@
 //////////////////////////////////////////////////////////////////////
 
-const change = document.getElementById("change_color");
+const change = document.getElementById("changecolor");
 
 change.addEventListener("mouseover",()=>
 {
     document.getElementById("menu").style.visibility ="visible";
+    document.getElementById('ws').appendChild(document.createElement("br"));
+    document.getElementById('ws').appendChild(document.createElement("br"));
 });
 
 document.getElementById("menu").addEventListener("mouseout",()=>
 {
     document.getElementById("menu").style.visibility="hidden";
+    document.getElementById('ws').innerHTML ="";
+
 });
 //////////////////////////////////////////////////////////////////////
 

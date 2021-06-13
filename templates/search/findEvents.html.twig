@@ -1,8 +1,11 @@
 {% extends 'search/findPlanslayout.html.twig' %}
 
-
+{% block other1link%} {{ path('searchplaces')}} {% endblock %}
 {% block other1 %} Places {% endblock %}
+
+{% block other2link%} {{ path('searchindoors')}} {% endblock %}
 {% block other2 %} Indoor {% endblock %}
+
 {% block name %} Find an event {% endblock %}
 {% block activity %} an event {% endblock %}
 {% block form %}
@@ -19,14 +22,27 @@
                     <div class="card-body">
                         <h5> {{ event.name }}</h5>
                         <p> {{ event.description }}</p>
-                        <p>City:</p>
+                        <p>City: {{ event.location }}</p>
                         <p>Date: {{ event.date|date("m/d/Y") }}</p>
-                        <p>Price: </p>
-                        <button type="button" class="btn btn-dark rounded">Details</button>
+                        <p>Price: {{ event.price}} </p>
+                        <a type="button" class="btn btn-dark rounded" href="{{ path('eventdetails', {'id': event.id }) }}">Details</a>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
 
+{% endblock %}
+
+{% block Pagination %}
+    <div>
+        <ul class="pagination">
+            {% if page >1 %}
+                <li><a class="page-link" href="{{ path('searchevents', {'page': page-1 }) }}">&laquo; Previous</a></li>
+            {% endif %}
+            {% if page < maxpage %}
+                <li><a class="page-link" href="{{ path('searchevents', {'page': page+1 }) }}">Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
 {% endblock %}

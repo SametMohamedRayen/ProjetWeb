@@ -19,7 +19,7 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
-    public function recherche($obj){
+    public function recherche($obj, $price_min, $price_max){
        /*
         -description: "1"
             -number: 1*/
@@ -29,8 +29,7 @@ class EvenementRepository extends ServiceEntityRepository
             "age_max" => $obj->getAgeMax(),
             "eco_friendly"=>$obj->getEcoFriendly(),
             "date"=>$obj->getDate(),
-            "price_max"=> $obj->getPriceMax(),
-            "price_min"=> $obj->getPriceMin(),
+            "location" => $obj->getLocation(),
             "duration"=> $obj->getDuration(),
             "number" => $obj->getNumber(),
         ];
@@ -38,19 +37,26 @@ class EvenementRepository extends ServiceEntityRepository
         $result = $this->createQueryBuilder('e');
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
-                if($critere == "price_min"){
-                    $result->andWhere('e.'.$critere.' >= :'.$critere);
+                if ($critere=="age_min"){
+                    $result->andWhere('e.age >= :'.$critere);
                 }
-                elseif ($critere=="price_max"){
-                    $result->andWhere('e.'.$critere.' <= :'.$critere);
+                elseif ($critere=="age_max"){
+                    $result->andWhere('e.age <= :'.$critere);
                 }
                 else{
                     $result->andWhere('e.'.$critere.' = :'.$critere);
                 }
 
                 $result->setParameter($critere,$valeur);
-
             }
+        }
+        if($price_max !=null){
+            $result->andWhere('e.price <= :max');
+            $result->setParameter("max",$price_max);
+        }
+        if ($price_min !=null){
+            $result->andWhere('e.price >= :min');
+            $result->setParameter("min",$price_min);
         }
 
             return $result->getQuery()

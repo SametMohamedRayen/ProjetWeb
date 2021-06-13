@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints;
 
 /**
  * @ORM\Table(name="event")
@@ -53,12 +51,7 @@ class Evenement
     /**
      * @ORM\Column(type="float")
      */
-    private $price_max;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $price_min;
+    private $price;
 
     /**
      * @ORM\Column(type="array")
@@ -89,6 +82,11 @@ class Evenement
      * @ORM\Column(type="string", length=255)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $location;
 
     public function getId(): ?int
     {
@@ -173,26 +171,14 @@ class Evenement
     }
 
 
-    public function getPriceMax(): ?float
+    public function getPrice(): ?float
     {
-        return $this->price_max;
+        return $this->price;
     }
 
-    public function setPriceMax(float $price): self
+    public function setPrice(float $price): self
     {
-        $this->price = $price_max;
-
-        return $this;
-    }
-
-    public function getPriceMin(): ?float
-    {
-        return $this->price_min;
-    }
-
-    public function setPriceMin(float $price): self
-    {
-        $this->price = $price_min;
+        $this->price = $price;
 
         return $this;
     }
@@ -200,7 +186,6 @@ class Evenement
     public function setTarget(array $target): self
     {
         $this->target = $target;
-
         return $this;
     }
 
@@ -212,7 +197,6 @@ class Evenement
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
         return $this;
     }
 
@@ -224,7 +208,6 @@ class Evenement
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
-
         return $this;
     }
 
@@ -236,7 +219,6 @@ class Evenement
     public function setLink(string $link): self
     {
         $this->link = $link;
-
         return $this;
     }
 
@@ -248,7 +230,6 @@ class Evenement
     public function setNumber(int $number): self
     {
         $this->number = $number;
-
         return $this;
     }
 
@@ -260,17 +241,18 @@ class Evenement
     public function setUser(string $user): self
     {
         $this->user = $user;
-
         return $this;
     }
-    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+
+    public function getLocation(): ?string
     {
-        $metadata->addPropertyConstraint('name',new Constraints\NotBlank() );
+        return $this->location;
+    }
 
-        $metadata->addPropertyConstraints('age_min',[new Constraints\NotBlank()]);
-        $metadata->addPropertyConstraints('age_max',[new Constraints\NotBlank()]);
+    public function setLocation(string $location): self
+    {
+        $this->location = $location;
 
-        $metadata->addPropertyConstraints('price_min',[new Constraints\NotBlank()]);
-        $metadata->addPropertyConstraints('price_max',[new Constraints\NotBlank()]);
+        return $this;
     }
 }

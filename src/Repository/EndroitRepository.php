@@ -20,9 +20,7 @@ class EndroitRepository extends ServiceEntityRepository
     }
 
     public function recherche($obj){
-        /*
-         -description: "1"
-             -number: 1*/
+
         $criteres = [
             "name" => $obj->getName(),
             "age_min"=> $obj->getAgeMin(),
@@ -30,18 +28,32 @@ class EndroitRepository extends ServiceEntityRepository
             "eco_friendly"=>$obj->getEcoFriendly(),
             "price_max"=> $obj->getPriceMax(),
             "price_min" => $obj->getPriceMin(),
-            "location" => $obj->getLocation(),
             "open" => $obj->getOpen(),
             "close" => $obj->getClose(),
-
-
         ];
 
+        dd($criteres);
         $result = $this->createQueryBuilder('e');
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
-                $result->andWhere('e.'.$critere.' = :'.$critere);
+                if($critere == "price_min"){
+                    $result->andWhere('e.price_min >= :'.$critere);
+                }
+                elseif ($critere=="price_max"){
+                    $result->andWhere('e.price_max <= :'.$critere);
+                }
+                elseif ($critere=="age_min"){
+                    $result->andWhere('e.age_min >= :'.$critere);
+                }
+                elseif ($critere=="age_max"){
+                    $result->andWhere('e.age_max <= :'.$critere);
+                }
+                else{
+                    $result->andWhere('e.'.$critere.' = :'.$critere);
+                }
+
                 $result->setParameter($critere,$valeur);
+
             }
         }
 

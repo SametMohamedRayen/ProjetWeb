@@ -13,9 +13,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class ActivityController extends AbstractController
 {
+    private $security;
+
+    public function __construct(Security $security)
+        {
+         $this->security = $security;
+     }
     /**
      * @Route("/activity", name="activity")
      */
@@ -46,6 +53,7 @@ class ActivityController extends AbstractController
      */
     public function formind(EntityManagerInterface $manager,Request $request)
     {
+        if ($this->security->isGranted('ROLE_USER')) {
         $ind = new Indoor();
         $form = $this->createForm(IndoorFType::class,$ind);
         $form->handleRequest($request);
@@ -83,14 +91,17 @@ class ActivityController extends AbstractController
             'ind'=>$ind,
             'form'=>$form->createView(),
             'what'=>'Indoor'
-        ]));
+        ]));}
+        else{
+            return $this->redirectToRoute('app_login');
+        }
     }
 
     /**
      * @Route("/inout/evnend/evn",name="evn")
      */
     public function formevn(EntityManagerInterface $manager,Request $request)
-    {
+    {if ($this->security->isGranted('ROLE_USER')) {
         $event = new Evenement();
         $form = $this->createForm(EventType::class,$event);
         $form->handleRequest($request);
@@ -129,14 +140,18 @@ class ActivityController extends AbstractController
             'event'=>$event,
             'form'=>$form->createView(),
             'what'=>'event'
-        ]));
+        ]));}
+    else{
+        return $this->redirectToRoute('app_login');
+    }
+
     }
 
     /**
      * @Route("/inoout/evnend/end/",name="end")
      */
     public function formend(EntityManagerInterface $manager,Request $request)
-    {
+    { if ($this->security->isGranted('ROLE_USER')) {
         $endroit = new Endroit();
         $form = $this->createForm(EndroitType::class,$endroit);
         $form->handleRequest($request);
@@ -174,7 +189,10 @@ class ActivityController extends AbstractController
             'endroit' => $endroit,
             'form' => $form->createView(),
             'what'=>'Endroit'
-        ]));
+        ]));}
+    else{
+        return $this->redirectToRoute('app_login');
+        }
     }
 
     public function valid($agemin,$agemax,$pricemin,$pricemax)

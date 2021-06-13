@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="creation de compte">
-      <change afterPath="$PROJECT_DIR$/templates/account/modifyEvent.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/modifyIndoor.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/modifyPlace.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/showEvents.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/showIndoor.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/showPlaces.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_13_2021_2_49_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_13_2021_2_49_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210613112326.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210613112326.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/chooseActivities.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/chooseActivities.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/deleteActivities.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/modifyActivity.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyActivity.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/showActivities.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="creation de compte" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -10,7 +10,7 @@
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.adresse_mail) }}
+        {{ form_row(registrationForm.adresseMail) }}
         {{ form_row(registrationForm.name) }}
         {{ form_row(registrationForm.username) }}
          {{ form_row(registrationForm.plainPassword, {
@@ -23,6 +23,6 @@
 
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn btn-lg btn-primary">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

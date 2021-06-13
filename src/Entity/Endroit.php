@@ -56,9 +56,9 @@ class Endroit
     private $price_max;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      */
-    private $target = [];
+    private $target;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -82,6 +82,7 @@ class Endroit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Compte",inversedBy="adresseMail")
      */
     private $user;
 
@@ -176,12 +177,12 @@ class Endroit
         return $this;
     }
 
-    public function getTarget(): ?array
+    public function getTarget(): ?string
     {
         return $this->target;
     }
 
-    public function setTarget(array $target): self
+    public function setTarget(string $target): self
     {
         $this->target = $target;
 

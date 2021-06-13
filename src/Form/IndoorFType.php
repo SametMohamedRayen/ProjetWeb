@@ -27,7 +27,7 @@ class IndoorFType extends AbstractType
             ->add('photo',FileType::class)
             ->add('price_min',MoneyType::class,array('currency'=>'TND'))
             ->add('price_max',MoneyType::class,array('currency'=>'TND'))
-            ->add('target')
+            ->add('target',ChoiceType::class,['choices'=>['Tourists'=>'Tourists','Locals'=>'Locals','Students'=>'Students']])
             ->add('Ajouter' , SubmitType::class ,[
                 'attr'=>['label' =>'Ajouter']
             ])

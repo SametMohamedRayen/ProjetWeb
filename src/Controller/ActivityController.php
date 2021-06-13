@@ -86,8 +86,7 @@ class ActivityController extends AbstractController
             if ($this->valid(
                 $form->get('age_min')->getData(),
                 $form->get('age_max')->getData(),
-                $form->get('price_min')->getData(),
-                $form->get('price_max')->getData()
+                0,0
             ))
             {
                 //COLOR VARIABLE

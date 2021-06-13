@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints;
 
 /**
  * @ORM\Table(name="event")
@@ -54,9 +56,9 @@ class Evenement
     private $price;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      */
-    private $target = [];
+    private $target;
 
     /**
      * @ORM\Column(type="date")
@@ -80,6 +82,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Compte",inversedBy="adresseMail")
      */
     private $user;
 
@@ -158,7 +161,7 @@ class Evenement
         return $this->photo;
     }
 
-    public function getTarget(): ?array
+    public function getTarget(): ?string
     {
         return $this->target;
     }
@@ -183,7 +186,7 @@ class Evenement
         return $this;
     }
 
-    public function setTarget(array $target): self
+    public function setTarget(string $target): self
     {
         $this->target = $target;
         return $this;
@@ -254,5 +257,17 @@ class Evenement
         $this->location = $location;
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('name',new Constraints\NotBlank() );
+
+        $metadata->addPropertyConstraints('age_min',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('age_max',[new Constraints\NotBlank()]);
+
+        $metadata->addPropertyConstraints('price',[new Constraints\NotBlank()]);
+        $metadata->addPropertyConstraints('duration',[new Constraints\Positive()]);
+        $metadata->addPropertyConstraints('number',[new Constraints\Positive()]);
     }
 }

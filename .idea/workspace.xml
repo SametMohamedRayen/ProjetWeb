@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/search/findIndoors.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/styleFind2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/search/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/styleAdd.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styleAdd.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/styleFind.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styleFind.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SearchActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Endroit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Endroit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FindEventsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindEventsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FindPlacesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindPlacesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IndoorRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IndoorRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/search/findEvents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findEvents.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/search/findPlaces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlaces.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +177,7 @@
       <workItem from="1622120543624" duration="19879000" />
       <workItem from="1622211446304" duration="447000" />
       <workItem from="1622239747612" duration="9445000" />
+      <workItem from="1623556107345" duration="7338000" />
     </task>
     <servers />
   </component>

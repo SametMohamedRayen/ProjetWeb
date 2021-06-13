@@ -1,0 +1,21 @@
+body{
+    background-color: #e9f2fa;
+}
+#choice {
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+
+}
+
+h1{
+    text-align: center;
+}
+
+#choice:hover{
+    width:60%;
+    margin-left:20%;
+    transition: 1s;
+}
+
+

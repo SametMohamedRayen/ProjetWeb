@@ -20,9 +20,7 @@ class SearchActivityController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('search/index.html.twig', [
-            'controller_name' => 'ActivityController',
-        ]);
+        return $this->render('search/index.html.twig');
     }
     /**
      * @Route("/search/events/{page?1}",name="searchevents"), methods={"POST"})

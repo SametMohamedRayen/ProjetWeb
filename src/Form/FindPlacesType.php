@@ -26,14 +26,21 @@ class FindPlacesType extends AbstractType
             ->add('price_min', MoneyType::class,array('required' => false , "currency"=>"TND"))
             ->add('price_max', MoneyType::class,array('required' => false , "currency"=>"TND"))
             ->add('target', ChoiceType::class, array("choices"=>[
-                "Tourist" => "Tourist",
+                "Tourists" => "Tourists",
                 "Locals"=> "Locals",
                 "Students" => "Students"
             ],
                 "expanded"=> false , "multiple"=> false, "required"=>false))
-            ->add('location')
-            ->add('open', TimeType::class ,array('required' => false,))
-            ->add('close', TimeType::class, array('required' => false))
+            ->add('location', ChoiceType::class, array("required"=>false ,"expanded"=> false , "multiple"=> false,
+                "choices"=> [
+                    "Tunis" => "Tunis" ,
+                    "Gabes" => "Gabes",
+                    "Gafsa" => "Gafsa",
+                    "Mahdia" => "Mahdia",
+                    "Beja" => "Beja",
+                ]))
+            ->add('open', TimeType::class)
+            ->add('close', TimeType::class)
             ->add('Search', SubmitType::class, [
                 'attr' => ['label' => 'Search']
             ])

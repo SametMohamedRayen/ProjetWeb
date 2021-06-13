@@ -27,15 +27,21 @@ class EndroitRepository extends ServiceEntityRepository
             "eco_friendly"=>$obj->getEcoFriendly(),
             "price_max"=> $obj->getPriceMax(),
             "price_min" => $obj->getPriceMin(),
-            "open" => $obj->getOpen(),
-            "close" => $obj->getClose(),
+            //"open" => $obj->getOpen(),
+            //"close" => $obj->getClose(),
             "target" => $obj->getTarget(),
+            "location" => $obj->getLocation()
         ];
-        dd($criteres);
 
         $result = $this->createQueryBuilder('e');
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
+                if($critere =="open"){
+                    //$result->andWhere('e.open = :'.$critere);
+                }
+                if($critere =="close"){
+                   // $result->andWhere('e.close = :'.$critere);
+                }
                 if($critere == "price_min"){
                     $result->andWhere('e.price_min >= :'.$critere);
                 }

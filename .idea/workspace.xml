@@ -6,15 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Endroit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Endroit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Indoor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Indoor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EndroitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EndroitType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FindEventsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindEventsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FindIndoorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindIndoorType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FindPlacesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FindPlacesType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EndroitRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IndoorRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IndoorRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailsIndoor.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailsIndoor.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailsPlace.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailsPlace.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/search/findEvents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findEvents.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/search/findIndoors.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findIndoors.html.twig" afterDir="false" />

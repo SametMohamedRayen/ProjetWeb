@@ -33,7 +33,14 @@ class EventType extends AbstractType
             ->add('target',ChoiceType::class,['choices'=>['Tourists'=>'Tourists','Locals'=>'Locals','Students'=>'Students']])
             ->add('date',DateType::class)
             ->add('duration',IntegerType::class)
-            ->add('location',TextType::class)
+            ->add('location', ChoiceType::class, array("expanded"=> false , "multiple"=> false,
+                "choices"=> [
+                    "Tunis" => "Tunis" ,
+                    "Gabes" => "Gabes",
+                    "Gafsa" => "Gafsa",
+                    "Mahdia" => "Mahdia",
+                    "Beja" => "Beja",
+                ]))
             ->add('link',TextType::class)
             ->add('number',IntegerType::class)
             ->add('Ajouter' , SubmitType::class ,[

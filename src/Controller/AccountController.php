@@ -30,11 +30,11 @@ class AccountController extends AbstractController
     public function showActivities($type): Response
     {
          if ($type == "place") {
-             $repository = $this->getDoctrine()->getRepository(endroit::class);
+             $repository = $this->getDoctrine()->getRepository(Endroit::class);
          }else if ($type == "event"){
-             $repository = $this->getDoctrine()->getRepository(event::class);
+             $repository = $this->getDoctrine()->getRepository(Evenement::class);
          }else {
-             $repository = $this->getDoctrine()->getRepository(indoor::class);
+             $repository = $this->getDoctrine()->getRepository(Indoor::class);
          }
 
 
@@ -43,7 +43,7 @@ class AccountController extends AbstractController
         if($user && !in_array('ROLE',$user->getRoles())) {
             $conditions = ['user' => $user];
         }
-        $Activities = $repository->findByUser($user->getUsername());
+        $Activities = $repository->findByAdresseMail($user->getAdresseMail());
 
         return $this->render('account/showActivities.html.twig', [
             'activities'=> $Activities,
@@ -52,6 +52,8 @@ class AccountController extends AbstractController
         ]);
 
     }
+
+
     /**
      * @Route("/activities",name="account.activities.choice")
      */
@@ -62,6 +64,8 @@ class AccountController extends AbstractController
         return $this->render('account/chooseActivities.html.twig');
 
     }
+
+
     /**
      * @Route("/activities/delete/{activity}",name="account.activities.delete")
      */
@@ -73,6 +77,8 @@ class AccountController extends AbstractController
         ]);
 
     }
+
+
     /**
      * @Route("/activities/modify/{activity}/",name="account.activities.modify")
      */

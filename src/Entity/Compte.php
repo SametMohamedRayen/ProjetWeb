@@ -4,16 +4,18 @@ namespace App\Entity;
 
 use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=CompteRepository::class)
+ * @UniqueEntity(fields={"adresse_mail"}, message="There is already an account with this adresse_mail")
  */
 class Compte
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+
+     * @ORM\Column(type="string")
      * @ORM\OneToMany(targetEntity="App\Entity\Indoor",mappedBy="user")
      * @ORM\OneToMany(targetEntity="App\Entity\Endroit",mappedBy="user")
      * @ORM\OneToMany(targetEntity="App\Entity\Evenement",mappedBy="user")
@@ -56,9 +58,23 @@ class Compte
      */
     private $occupation;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
 
 
+    private $roles = array();
+    public function getRoles() {
+        if (empty($this->roles)) {
+            return ['ROLE_USER'];
+        }
+        return $this->roles;
+    }
 
+    function addRole($role) {
+        $this->roles[] = $role;
+    }
     public function getAdresseMail(): ?string
     {
         return $this->adresseMail;
@@ -151,6 +167,19 @@ class Compte
     public function setOccupation(string $occupation): self
     {
         $this->occupation = $occupation;
+
+        return $this;
+    }
+
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

@@ -20,7 +20,7 @@ final class Version20210613073701 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE endroit CHANGE target target VARCHAR(255) NOT NULL');
+       $this->addSql('ALTER TABLE endroit CHANGE target target VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE event CHANGE target target VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE indoor CHANGE target target VARCHAR(255) NOT NULL');
     }

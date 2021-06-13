@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e418bdc-e12d-4621-9525-53f40eaca587" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ProjetWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/details.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Compte.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Compte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

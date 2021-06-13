@@ -91,10 +91,6 @@ class Evenement
      */
     private $location;
 
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $color;
 
     public function getId(): ?int
     {
@@ -276,15 +272,4 @@ class Evenement
         $metadata->addPropertyConstraints('number',[new Constraints\Positive()]);
     }
 
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(?string $color): self
-    {
-        $this->color = $color;
-
-        return $this;
-    }
 }

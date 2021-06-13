@@ -30,6 +30,7 @@ class IndoorRepository extends ServiceEntityRepository
             "eco_friendly"=>$obj->getEcoFriendly(),
             "price_max"=> $obj->getPriceMax(),
             "price_min" => $obj->getPriceMin(),
+            "target" => $obj->getTarget(),
 
         ];
 

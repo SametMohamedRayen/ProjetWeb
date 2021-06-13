@@ -260,16 +260,4 @@ class Evenement
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata): void
-    {
-        $metadata->addPropertyConstraint('name',new Constraints\NotBlank() );
-
-        $metadata->addPropertyConstraints('age_min',[new Constraints\NotBlank()]);
-        $metadata->addPropertyConstraints('age_max',[new Constraints\NotBlank()]);
-
-        $metadata->addPropertyConstraints('price',[new Constraints\NotBlank()]);
-        $metadata->addPropertyConstraints('duration',[new Constraints\Positive()]);
-        $metadata->addPropertyConstraints('number',[new Constraints\Positive()]);
-    }
-
 }

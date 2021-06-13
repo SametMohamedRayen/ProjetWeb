@@ -5,16 +5,16 @@ namespace App\Entity;
 use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CompteRepository::class)
- * @UniqueEntity(fields={"adresse_mail"}, message="There is already an account with this adresse_mail")
+ * @UniqueEntity(fields={"adresseMail"}, message="There is already an account with this adresseMail")
  */
-class Compte
+class Compte implements UserInterface
 {
     /**
      * @ORM\Id
-
      * @ORM\Column(type="string")
      * @ORM\OneToMany(targetEntity="App\Entity\Indoor",mappedBy="user")
      * @ORM\OneToMany(targetEntity="App\Entity\Endroit",mappedBy="user")
@@ -80,9 +80,9 @@ class Compte
         return $this->adresseMail;
     }
 
-    public function setAdresseMail(string $adresseMail): self
+    public function setAdresseMail(string $adresse_mail): self
     {
-        $this->adresseMail = $adresseMail;
+        $this->adresseMail = $adresse_mail;
 
         return $this;
     }
@@ -183,4 +183,15 @@ class Compte
 
         return $this;
     }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }
+

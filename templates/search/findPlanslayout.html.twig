@@ -10,7 +10,7 @@
     <title> {% block name %} {% endblock %}</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
     <a class="navbar-brand">
         <img src="" height="28" alt="Logo">
     </a>
@@ -40,8 +40,8 @@
     <div class="row">
 
         <!--Side FilterBar-->
-        <form class="col-md-4 col-lg-3 mt-5" method="post">
-            <h3 class="mb-3 mt-5">Find {% block activity %}  {% endblock %}</h3>
+        <form class="col-md-4 col-lg-3" method="post">
+            <h3 class="mb-3 mt-2">Find {% block activity %}  {% endblock %}</h3>
             <div class="divider mt-4 border-secondary"></div>
             <div>
                 <!--Events Option-->
@@ -58,8 +58,8 @@
 
         <!--Search Result-->
 
-        <div class=" col-lg-8 mt-5">
-            <div class="row mt-5">
+        <div class=" col-lg-8 mt-2">
+            <div class="row mt-2">
                 {% block card %}
                 {% endblock %}
             </div>

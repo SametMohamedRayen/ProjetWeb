@@ -56,7 +56,7 @@ class AccountController extends AbstractController
             }
         }
         return($this->render('account/modifyAccount.html.twig' ,['row'=>$acc ,
-        'form' => $form->createView()]));
+            'form' => $form->createView()]));
     }
 
     public function isCsrfTokenValid(string $id, ?string $token): bool
@@ -68,7 +68,7 @@ class AccountController extends AbstractController
     {
         $compte = $this->getDoctrine()->getRepository(Compte::class);
         $result = $compte->findByUsername($form->get("username")->getData());
-        if(isset($result))
+        if($result != [])
         {
             $this->addFlash('fail','Essayer de Saisir un nouveau username ,cela déja existe !');
             return false;
@@ -79,9 +79,25 @@ class AccountController extends AbstractController
     /**
      * @Route ("/deleteaccount",name="deleteaccount")
      */
-    public function deleteaccount(EntityManagerInterface $manager,Request $request)
+    public function deleteaccount(EntityManagerInterface $manager)
     {
+        $user = $this->getUser();
+        $repository = $this->getDoctrine()->getRepository(Compte::class);
+        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $name = $acc->getName();
+        $manager->remove($acc);
+        $manager->flush();
+        return $this->redirectToRoute('home',['goodbye'=>'Goodbye '.$name.'! We will miss you :( !']);
 
+    }
+
+    /**
+     * @Route ("/deleteAccountConfirm",name="deleteAccountConfirm")
+     */
+
+    public function deleteAccountConfirm()
+    {
+        return ($this->render('account/deleteAccountConfirm.html.twig'));
     }
 
 
@@ -98,30 +114,29 @@ class AccountController extends AbstractController
 
 
         /*$user = $this->getUser();
-
         if($user && !in_array('ROLE',$user->getRoles())) {
             $conditions = ['user' => $user];
         }*/
 
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
         if (count($activities)){
-        $offset = 12;
-        $maxpage = count( $activities)/$offset;
-        $activities2= null;
-        $j=1;
-        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
-        {
-            if(isset($activities[$i])) {
-                $activities2[$j] = $activities[$i];
-                $j++;
+            $offset = 12;
+            $maxpage = count( $activities)/$offset;
+            $activities2= null;
+            $j=1;
+            for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+            {
+                if(isset($activities[$i])) {
+                    $activities2[$j] = $activities[$i];
+                    $j++;
+                }
             }
-        }
-        return $this->render('account/showEvents.html.twig', [
-            'activities'=> $activities2,
-            'page'=>$page,
-            'maxpage'=> $maxpage,
+            return $this->render('account/showEvents.html.twig', [
+                'activities'=> $activities2,
+                'page'=>$page,
+                'maxpage'=> $maxpage,
 
-        ]);
+            ]);
         }else{
             $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
@@ -144,26 +159,26 @@ class AccountController extends AbstractController
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
         if (count($activities)){
 
-        $offset = 12;
-        $maxpage = count( $activities)/$offset;
-        $activities2= null;
-        $j=1;
-        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
-        {
-            if(isset($activities[$i])) {
-                $activities2[$j] = $activities[$i];
-                $j++;
+            $offset = 12;
+            $maxpage = count( $activities)/$offset;
+            $activities2= null;
+            $j=1;
+            for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+            {
+                if(isset($activities[$i])) {
+                    $activities2[$j] = $activities[$i];
+                    $j++;
+                }
             }
-        }
-        return $this->render('account/showPlaces.html.twig', [
-            'activities'=> $activities2,
-            'page'=>$page,
-            'maxpage'=> $maxpage,
+            return $this->render('account/showPlaces.html.twig', [
+                'activities'=> $activities2,
+                'page'=>$page,
+                'maxpage'=> $maxpage,
 
-        ]);
-       }else{
-        $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
-        return $this->redirectToRoute('account.activities.choice');
+            ]);
+        }else{
+            $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+            return $this->redirectToRoute('account.activities.choice');
         }
 
     }

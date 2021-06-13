@@ -18,6 +18,11 @@
     <a class="navbar-brand">
         <img src="public/assets/images/JAW2.png" height="28" alt="Logo">
     </a>
+    {% if goodbye is defined %}
+        <div class="alert alert-dismissible alert-warning">
+            {{ goodbye }}
+        </div>
+    {% endif %}
     <a class="navbar-brand" href="#">JAW</a>
 
     <div class="collapse navbar-collapse">

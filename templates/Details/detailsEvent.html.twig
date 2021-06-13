@@ -1,6 +1,9 @@
 {% extends 'details/detailslayout.html.twig' %}
 {% block title %} {{ event.name }}{% endblock %}
+
+{% block photo %} {{asset(event.photo)}} {% endblock %}
 {% block card %}
+
     <h5 class="card-title">{{event.name }} </h5>
     <p class="card-text">Description : {{event.description }} </p>
     <p class="card-text">Age min : {{event.agemin }} </p>

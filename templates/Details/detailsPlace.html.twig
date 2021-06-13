@@ -1,5 +1,6 @@
 {% extends 'details/detailslayout.html.twig' %}
 {% block title %} {{ place.name }}{% endblock %}
+{% block photo %} {{asset(place.photo)}} {% endblock %}
 
 {% block card %}
     <h5 class="card-title">{{place.name }} </h5>

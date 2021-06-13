@@ -31,10 +31,13 @@ class FindEventsType extends AbstractType
                 "Students" =>"Students"
             ],
                 "expanded"=> false , "multiple"=> false, "required"=>false))
-            ->add('location', ChoiceType::class, array("required"=>false ,"choices"=> [
+            ->add('location', ChoiceType::class, array("required"=>false ,"expanded"=> false , "multiple"=> false,
+                "choices"=> [
                 "Tunis" => "Tunis" ,
                 "Gabes" => "Gabes",
-                "Gafsa" => "Gafsa"
+                "Gafsa" => "Gafsa",
+                "Mahdia" => "Mahdia",
+                "Beja" => "Beja",
             ]))
             ->add('date', DateType::class, array('required'=>false,  'widget' => 'single_text',  'empty_data' => null))
             ->add('duration' , IntegerType::class, array('required'=>false))

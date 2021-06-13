@@ -1,6 +1,10 @@
 {% extends 'details/detailslayout.html.twig' %}
 {% block title %} {{ indoor.name }}{% endblock %}
+
+{% block photo %} {{asset(indoor.photo)}} {% endblock %}
 {% block card %}
+
+
     <h5 class="card-title">{{indoor.name }} </h5>
     <p class="card-text">Description : {{indoor.description }} </p>
     <p class="card-text">Age min : {{indoor.agemin }} </p>

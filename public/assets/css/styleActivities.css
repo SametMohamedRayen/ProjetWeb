@@ -18,7 +18,6 @@ body
 
 }
 
-
 .container {
     margin: 0;
     position: absolute;
@@ -26,3 +25,4 @@ body
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+

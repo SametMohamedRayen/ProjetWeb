@@ -1,0 +1,28 @@
+body
+{
+    background-image: url("../images/pattern.jpg");
+}
+.inputs
+{
+    width:1050px;
+}
+.cent
+{
+    margin-top: 30px;
+    margin-left: 55%;
+}
+.halfs {
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 40%;
+
+}
+
+
+.container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

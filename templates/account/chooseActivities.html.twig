@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title%} JAWEK {% endblock %}
+ {%block Stylesheet%}
+{{ parent() }}
+     <link rel="stylesheet" href="{{ asset('assets/css/styleActivities.css') }}"/>
+     <link rel="stylesheet" href="{{ asset('assets/css/styleAdd.css') }}"/>
+ {% endblock %}
+{% block body %}
+    <div class="container">
+
+        <h1 class="cent">Pick a Type</h1>
+        <a class="btn btn-lg btn-primary halfs" href="{{ path('account.activities',{'type':"event"}) }}">Event</a>
+        <a class="btn btn-lg btn-primary halfs"  href="{{ path('account.activities',{'type':"indoor"}) }}">Indoor</a>
+        <a class="btn btn-lg btn-primary halfs"  href="{{ path('account.activities',{'type':"place"}) }}">Place</a>
+
+
+    </div>
+{% endblock %}

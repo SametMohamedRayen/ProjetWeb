@@ -25,7 +25,7 @@
                         <p>City: {{ event.location }}</p>
                         <p>Date: {{ event.date|date("m/d/Y") }}</p>
                         <p>Price: {{ event.price}} </p>
-                        <button type="button" class="btn btn-dark rounded">Details</button>
+                        <a type="button" class="btn btn-dark rounded" href="{{ path('eventdetails', {'id': event.id }) }}">Details</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,6 @@ class EndroitRepository extends ServiceEntityRepository
     }
 
     public function recherche($obj){
-
         $criteres = [
             "name" => $obj->getName(),
             "age_min"=> $obj->getAgeMin(),
@@ -30,9 +29,9 @@ class EndroitRepository extends ServiceEntityRepository
             "price_min" => $obj->getPriceMin(),
             "open" => $obj->getOpen(),
             "close" => $obj->getClose(),
+            "target" => $obj->getTarget(),
         ];
 
-        dd($criteres);
         $result = $this->createQueryBuilder('e');
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
@@ -47,6 +46,9 @@ class EndroitRepository extends ServiceEntityRepository
                 }
                 elseif ($critere=="age_max"){
                     $result->andWhere('e.age_max <= :'.$critere);
+                }
+                elseif($critere=="target"){
+
                 }
                 else{
                     $result->andWhere('e.'.$critere.' = :'.$critere);

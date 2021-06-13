@@ -38,10 +38,10 @@ class EvenementRepository extends ServiceEntityRepository
         foreach ($criteres as $critere => $valeur ){
             if($valeur !=null){
                 if ($critere=="age_min"){
-                    $result->andWhere('e.age >= :'.$critere);
+                    $result->andWhere('e.age_min >= :'.$critere);
                 }
                 elseif ($critere=="age_max"){
-                    $result->andWhere('e.age <= :'.$critere);
+                    $result->andWhere('e.age_max <= :'.$critere);
                 }
                 else{
                     $result->andWhere('e.'.$critere.' = :'.$critere);

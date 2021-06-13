@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Endroit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,7 +24,12 @@ class FindPlacesType extends AbstractType
             ->add('eco_friendly')
             ->add('price_min', MoneyType::class,array('required' => false , "currency"=>"TND"))
             ->add('price_max', MoneyType::class,array('required' => false , "currency"=>"TND"))
-            ->add('target')
+            ->add('target', ChoiceType::class, array("choices"=>[
+                "Tourist" => "Tourist",
+                "Locals"=> "Locals",
+                "Students" =>"Students"
+            ],
+                "expanded"=> true , "multiple"=> true))
             ->add('location')
             ->add('open', TimeType::class ,array('required' => false ))
             ->add('close', TimeType::class, array('required' => false))

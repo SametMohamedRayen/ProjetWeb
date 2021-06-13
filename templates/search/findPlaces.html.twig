@@ -23,7 +23,7 @@
                         <h5>{{ place.name }}</h5>
                         <p>{{ place.description }}</p>
                         <p>City: {{ place.location }}</p>
-                        <button type="button" class="btn btn-dark rounded">Details</button>
+                        <a type="button" class="btn btn-dark rounded" href="{{ path('placedetails', {'id': place.id }) }}">Details</a>
                     </div>
                 </div>
             </div>

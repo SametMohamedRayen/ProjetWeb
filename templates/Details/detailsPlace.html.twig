@@ -1,0 +1,17 @@
+{% extends 'details/detailslayout.html.twig' %}
+{% block title %} {{ place.name }}{% endblock %}
+
+{% block card %}
+    <h5 class="card-title">{{place.name }} </h5>
+    <p class="card-text">Description : {{place.description }} </p>
+    <p class="card-text">Age min : {{place.agemin }} </p>
+    <p class="card-text">Age max : {{place.agemax }}</p>
+    <p class="card-text">Eco friendly : {{place.ecofriendly }}</p>
+    <p class="card-text">Target :  </p>
+    <p class="card-text">Price min: {{place.pricemin }}</p>
+    <p class="card-text">Price max: {{place.pricemin }}</p>
+    <p class="card-text">Location : {{place.location }}</p>
+    <p class="card-text">Opening time : {{place.open|date("h:m") }}</p>
+    <p class="card-text">Closing time : {{place.close|date("h:m") }}</p>
+    <p class="card-text"><small class="text-muted">Added By: {{place.user }} </small></p>
+{% endblock %}

@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CompteRepository::class)
- * @UniqueEntity(fields={"adresse_mail"}, message="There is already an account with this adresse_mail")
+ * @UniqueEntity(fields={"adresseMail"}, message="There is already an account with this adresseMail")
  */
 class Compte implements UserInterface
 {
@@ -21,7 +21,7 @@ class Compte implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Evenement",mappedBy="user")
      */
 
-    private $adresse_mail;
+    private $adresseMail;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,12 +77,12 @@ class Compte implements UserInterface
     }
     public function getAdresseMail(): ?string
     {
-        return $this->adresse_mail;
+        return $this->adresseMail;
     }
 
     public function setAdresseMail(string $adresse_mail): self
     {
-        $this->adresse_mail = $adresse_mail;
+        $this->adresseMail = $adresse_mail;
 
         return $this;
     }
@@ -194,3 +194,4 @@ class Compte implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 }
+

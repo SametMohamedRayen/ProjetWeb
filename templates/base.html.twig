@@ -55,25 +55,23 @@
     </div>
 </nav>
 
-{% block body %}
+{% block messages %}
+
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="alert alert-dismissible alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.session.flashbag.get('success') %}
+        <div class="alert alert-dismissible alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
 {% endblock %}
-{% for  message in  app.session.flashBag.get('info') %}
-    <div class="alert alert-info">
-        {{ message }}
-    </div>
-{% endfor %}
-{% for  message in  app.session.flashBag.get('success') %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-{% endfor %}
-{% for  message in  app.session.flashBag.get('error') %}
-    <div class="alert alert-danger">
-        {{ message }}
-    </div>
-{% endfor %}
 
+{% block body %}
+{% endblock %}
 
 
     </body>

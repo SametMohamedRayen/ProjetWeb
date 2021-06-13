@@ -1,0 +1,4 @@
+# app/config/config.yml
+
+parameters:
+  upload_directory: '%kernel.root_dir%/../public/assets/temp'

@@ -71,6 +71,11 @@ class Indoor
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $color;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,5 +210,17 @@ class Indoor
 
         $metadata->addPropertyConstraints('price_min',[new Constraints\NotBlank()]);
         $metadata->addPropertyConstraints('price_max',[new Constraints\NotBlank()]);
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
     }
 }

@@ -1,0 +1,93 @@
+{% extends 'activity/endroitForm.html.twig' %}
+{% block stylesheet%}
+    {{ parent() }}
+
+{% endblock %}
+<!doctype html>
+<html lang="en">
+<title>creer compte</title>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Sign in Start -->
+<section class="sign-up-page">
+    <div id="container-inside">
+        <div id="circle-small"></div>
+        <div id="circle-medium"></div>
+        <div id="circle-large"></div>
+        <div id="circle-xlarge"></div>
+        <div id="circle-xxlarge"></div>
+    </div>
+    <div class="container p-0">
+        <div class="row no-gutters">
+            <div class="col-md-6 bg-white pt-5">
+                <div class="sign-in-from">
+                    <h1 class="mb-0">Sign Up</h1>
+                    <p>Enter your coordinates down below.</p>
+                    <form class="mt-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Email address</label>
+                            <input type="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Jawwisti's Name</label>
+                            <input class="form-control mb-0" id="exampleInputName1" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jawwisti's userName</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputEmail1" placeholder="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputBirthDate">Birthday Date</label>
+                            <input  type="date" class="form-control mb-0" id="exampleInputBirthDate" placeholder="date_birth">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNumber">Jawwisti's phone number</label>
+                            <input type="number" class="form-control mb-0" id="exampleInputNumber" placeholder="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputResidencePlace">Place of residence</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputResidencePlace" placeholder="place_residence">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputOccupation">Occupation</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputOccupation" placeholder="occupation">
+                        </div>
+
+
+                        <div class="d-inline-block w-100">
+                            <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">I accept <a href="#">Terms and Conditions</a></label>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">Sign Up</button>
+                        </div>
+                        <div class="sign-info">
+                            <span class="dark-color d-inline-block line-height-2">Already Have Account ? <a href="#">Log In</a></span>
+                            <ul class="iq-social-media">
+                                <li><a href="#"><i class="ri-facebook-box-line"></i></a></li>
+                                <li><a href="#"><i class="ri-twitter-line"></i></a></li>
+                                <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sign in END -->

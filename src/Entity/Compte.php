@@ -14,6 +14,9 @@ class Compte
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="App\Entity\Indoor",mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Endroit",mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Evenement",mappedBy="user")
      */
 
     private $adresseMail;

@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,10 +27,10 @@ class EndroitType extends AbstractType
             ->add('photo',FileType::class)
             ->add('price_min',MoneyType::class,array('currency'=>'TND'))
             ->add('price_max',MoneyType::class,array('currency'=>'TND'))
-            ->add('target')
+            ->add('target',ChoiceType::class,['choices'=>['Tourists'=>'Tourists','Locals'=>'Locals','Students'=>'Students']])
             ->add('location')
-            ->add('open',DateType::class)
-            ->add('close',DateType::class)
+            ->add('open',TimeType::class)
+            ->add('close',TimeType::class)
             ->add('Ajouter' , SubmitType::class ,[
                 'attr'=>['label' =>'Ajouter']
             ])

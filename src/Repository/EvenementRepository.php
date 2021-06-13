@@ -32,6 +32,7 @@ class EvenementRepository extends ServiceEntityRepository
             "location" => $obj->getLocation(),
             "duration"=> $obj->getDuration(),
             "number" => $obj->getNumber(),
+            "target" => $obj->getTarget(),
         ];
 
         $result = $this->createQueryBuilder('e');

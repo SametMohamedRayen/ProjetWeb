@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Indoor;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,7 +23,12 @@ class FindIndoorType extends AbstractType
             ->add('eco_friendly')
             ->add('price_min',MoneyType::class, array('required' => false , "currency"=>"TND"))
             ->add('price_max',MoneyType::class, array('required' => false , "currency"=>"TND"))
-            ->add('target')
+            ->add('target', ChoiceType::class, array("choices"=>[
+                "Tourist" => "Tourist",
+                "Locals"=> "Locals",
+                "Students" =>"Students"
+            ],
+                "expanded"=> false , "multiple"=> false, "required"=>false))
             ->add('Search', SubmitType::class, [
                 'attr' => ['label' => 'Search']
             ])

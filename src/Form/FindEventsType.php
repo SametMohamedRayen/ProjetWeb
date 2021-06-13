@@ -25,13 +25,18 @@ class FindEventsType extends AbstractType
             ->add('name' ,TextType::class,array('required' => false))
             ->add('price_min', MoneyType::class,array('required' => false , "currency"=>"TND", "mapped" =>false))
             ->add('price_max', MoneyType::class,array('required' => false , "currency"=>"TND", "mapped" =>false))
-            ->add('target')
+            ->add('target', ChoiceType::class, array("choices"=>[
+                "Tourist" => "Tourist",
+                "Locals"=> "Locals",
+                "Students" =>"Students"
+            ],
+                "expanded"=> false , "multiple"=> false, "required"=>false))
             ->add('location', ChoiceType::class, array("required"=>false ,"choices"=> [
                 "Tunis" => "Tunis" ,
                 "Gabes" => "Gabes",
                 "Gafsa" => "Gafsa"
             ]))
-            ->add('date', DateType::class, array('required'=>false,  'widget' => 'single_text',  'empty_data' => null, "invalid_message"=> false))
+            ->add('date', DateType::class, array('required'=>false,  'widget' => 'single_text',  'empty_data' => null))
             ->add('duration' , IntegerType::class, array('required'=>false))
             ->add('number', IntegerType::class, array('required'=>false))
             ->add('Search', SubmitType::class, [

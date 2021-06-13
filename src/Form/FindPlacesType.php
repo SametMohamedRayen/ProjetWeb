@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Endroit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,11 +28,11 @@ class FindPlacesType extends AbstractType
             ->add('target', ChoiceType::class, array("choices"=>[
                 "Tourist" => "Tourist",
                 "Locals"=> "Locals",
-                "Students" =>"Students"
+                "Students" => "Students"
             ],
-                "expanded"=> true , "multiple"=> true))
+                "expanded"=> false , "multiple"=> false, "required"=>false))
             ->add('location')
-            ->add('open', TimeType::class ,array('required' => false ))
+            ->add('open', TimeType::class ,array('required' => false,))
             ->add('close', TimeType::class, array('required' => false))
             ->add('Search', SubmitType::class, [
                 'attr' => ['label' => 'Search']

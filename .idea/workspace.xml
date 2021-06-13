@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e418bdc-e12d-4621-9525-53f40eaca587" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/details.css" afterDir="false" />
+    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="creation de compte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailsEvent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/findPlanslayout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +147,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -180,7 +173,6 @@
       <workItem from="1622120543624" duration="19879000" />
       <workItem from="1622211446304" duration="447000" />
       <workItem from="1622239747612" duration="9445000" />
-      <workItem from="1623556107345" duration="7338000" />
     </task>
     <servers />
   </component>
@@ -198,6 +190,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creation de compte" />
+    <option name="LAST_COMMIT_MESSAGE" value="creation de compte" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

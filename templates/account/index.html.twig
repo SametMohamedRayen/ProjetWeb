@@ -3,5 +3,49 @@
 {% block title %}Modify Account{% endblock %}
 
 {% block body %}
-
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Attribute</th>
+        <th scope="col">Current Value</tr>
+    </thead>
+    <tbody>
+    <tr class="table-active">
+        <th scope="row">Adresse Email</th>
+        <td>{{ row.adresseMail }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Name</th>
+        <td>{{ row.name }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Username</th>
+        <td>{{ row.username }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Password</th>
+        <td type="password">{{ row.password }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Date Of Birth</th>
+        <td>{{ row.DateBirth | date('d/m/Y')}}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Phone Number</th>
+        <td>{{ row.phoneNumber }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Place of Residency</th>
+        <td>{{ row.PlaceResidence }}</td>
+    </tr>
+    <tr class="table-active">
+        <th scope="row">Occupation</th>
+        <td>{{ row.occupation }}</td>
+    </tr>
+    <tr class="table-active">
+        <td><a href="{{ path('modifyaccount') }}" class="btn btn-primary">Modify</a></td>
+        <td><a href="{{ path('deleteaccount')}} class="btn btn-primary">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
 {% endblock %}

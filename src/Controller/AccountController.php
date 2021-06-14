@@ -37,7 +37,7 @@ class AccountController extends AbstractController
     {if ($this->security->isGranted('ROLE_USER')) {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $row = $repository->findOneByAdresseMail(11); //FIX
+        $row = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
         return $this->render('account/index.html.twig', ['row'=>$row
         ]);
     }
@@ -53,9 +53,10 @@ class AccountController extends AbstractController
      */
     public function modifyaccount(EntityManagerInterface $manager,Request $request)
     {
-        $user = $this->getUser();
+
+        $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $acc = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
 
         $form = $this->createForm(ModifyAccountType::class,$acc);
         $form->handleRequest($request);
@@ -125,16 +126,10 @@ class AccountController extends AbstractController
      */
     public function showEvents($page): Response
     {
-
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $user = $this->getUser();
 
-
-        /*$user = $this->getUser();
-        if($user && !in_array('ROLE',$user->getRoles())) {
-            $conditions = ['user' => $user];
-        }*/
-
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
             $offset = 12;
             $maxpage = count( $activities)/$offset;
@@ -168,12 +163,9 @@ class AccountController extends AbstractController
     {
 
         $repository = $this->getDoctrine()->getRepository(Endroit::class);
-        /*$user = $this->getUser();
-        if($user && !in_array('ROLE',$user->getRoles())) {
-            $conditions = ['user' => $user];
-        }*/
+        $user = $this->getUser();
 
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
 
             $offset = 12;
@@ -208,12 +200,9 @@ class AccountController extends AbstractController
     {
 
         $repository = $this->getDoctrine()->getRepository(Indoor::class);
-        /*$user = $this->getUser();
-        if($user && !in_array('ROLE',$user->getRoles())) {
-            $conditions = ['user' => $user];
-        }*/
+        $user = $this->getUser();
 
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
             $offset = 12;
             $maxpage = count( $activities)/$offset;

@@ -48,7 +48,7 @@ class UserAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator im
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'adresseMail' => $request->request->get('adresseMail'),
+            'adresseMail' => $request->request->get('adresse_mail'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
@@ -58,6 +58,7 @@ class UserAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator im
         );
 
         return $credentials;
+
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -91,12 +92,12 @@ class UserAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator im
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
-        }
+        //if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+            return new RedirectResponse($this->urlGenerator->generate('home'));
+       // }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+       // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()

@@ -55,7 +55,7 @@ class AccountController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @Route("/modifyaccount",name="modifyaccount")
      */
-    public function modifyaccount(EntityManagerInterface $manager,Request $request)
+    public function modifyaccount(EntityManagerInterface $manager,Request $request):Response
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
@@ -97,7 +97,7 @@ class AccountController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @Route ("/deleteaccount",name="deleteaccount")
      */
-    public function deleteaccount(EntityManagerInterface $manager,Request $request)
+    public function deleteaccount(EntityManagerInterface $manager,Request $request):Response
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
@@ -131,12 +131,7 @@ class AccountController extends AbstractController
     {
 
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
-
-
-        /*$user = $this->getUser();
-        if($user && !in_array('ROLE',$user->getRoles())) {
-            $conditions = ['user' => $user];
-        }*/
+        $user = $this->getUser();
 
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
         if (count($activities)){

@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="creation de compte">
+    <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/modifyEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyEvent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/modifyIndoor.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyIndoor.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/modifyPlace.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyPlace.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/showEvents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/showEvents.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/showIndoor.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/showIndoor.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/showPlaces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/showPlaces.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Details/detailslayout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,8 +129,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
-      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle" />
     </include_path>
   </component>
@@ -179,6 +176,7 @@
       <workItem from="1622120543624" duration="19879000" />
       <workItem from="1622211446304" duration="447000" />
       <workItem from="1622239747612" duration="9445000" />
+      <workItem from="1623614522506" duration="1618000" />
     </task>
     <servers />
   </component>

@@ -34,9 +34,9 @@ class AccountController extends AbstractController
      */
     public function index(): Response
     {if ($this->security->isGranted('ROLE_USER')) {
-        $user = $this->getUser();
+        $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $row = $repository->findOneByAdresseMail(11); //FIX
+        $row = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
         return $this->render('account/index.html.twig', ['row'=>$row
         ]);
     }
@@ -52,9 +52,9 @@ class AccountController extends AbstractController
      */
     public function modifyaccount(EntityManagerInterface $manager,Request $request)
     {
-        $user = $this->getUser();
+        $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $acc = $repository->findOneByAdresseMail($user->getAdresseMail());
 
         $form = $this->createForm(ModifyAccountType::class,$acc);
         $form->handleRequest($request);
@@ -65,6 +65,7 @@ class AccountController extends AbstractController
                 $manager->persist($acc);
                 $manager->flush();
                 $this->addFlash('success','Account information updated with success !');
+                return ($this->redirectToRoute('account'));
             }
         }
         return($this->render('account/modifyAccount.html.twig' ,['row'=>$acc ,

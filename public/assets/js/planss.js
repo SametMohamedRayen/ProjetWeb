@@ -60,5 +60,18 @@ document.getElementById("yellow").addEventListener("click",()=>
 });
 
 /////////////////////////////////////////////////////////////////
+const planName = document.getElementById("name"); //GET FORM DATA
+const def = document.querySelector("legend").innerHTML;
+
+planName.addEventListener("keyup",()=>{
+    const where = document.querySelector("legend");
+     if( where.innerHTML.value == "")
+     {
+         where.innerHTML = def;
+     }
+     else{
+    where.innerHTML = planName.value;
+    }
+});
 
 

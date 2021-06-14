@@ -97,7 +97,7 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $acc = $repository->findOneByAdresseMail($user->getAdressMail());
         $name = $acc->getName();
         $manager->remove($acc);
         $manager->flush();
@@ -129,7 +129,7 @@ class AccountController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $user = $this->getUser();
 
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+        $activities = $repository->findByUser($user->getAdresseMail() );
         if (count($activities)){
             $offset = 12;
             $maxpage = count( $activities)/$offset;
@@ -149,7 +149,7 @@ class AccountController extends AbstractController
 
             ]);
         }else{
-            $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+            $this->addFlash('error', "You haven't shared any events yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
         }
 
@@ -163,12 +163,10 @@ class AccountController extends AbstractController
     {
 
         $repository = $this->getDoctrine()->getRepository(Endroit::class);
-        /*$user = $this->getUser();
-        if($user && !in_array('ROLE',$user->getRoles())) {
-            $conditions = ['user' => $user];
-        }*/
+        $user = $this->getUser();
 
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
 
             $offset = 12;
@@ -189,7 +187,7 @@ class AccountController extends AbstractController
 
             ]);
         }else{
-            $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+            $this->addFlash('error', "You haven't shared any places yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
         }
 
@@ -281,7 +279,7 @@ class AccountController extends AbstractController
      */
     public function modifyEvent($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $event = $this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['user' => "tasnim@gmail.tn", 'id' => $id]);
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyEventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -304,7 +302,7 @@ class AccountController extends AbstractController
      */
     public function modifyPlace($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $place = $this->getDoctrine()->getRepository(Endroit::class)->findOneBy(['user' => "tasnim@gmail.tn", 'id' => $id]);
+        $place = $this->getDoctrine()->getRepository(Endroit::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyPlaceType::class, $place);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -326,7 +324,7 @@ class AccountController extends AbstractController
      */
     public function modifyIndoor($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $indoor = $this->getDoctrine()->getRepository(Indoor::class)->findOneBy(['user' => "tasnim@gmail.tn", 'id' => $id]);
+        $indoor = $this->getDoctrine()->getRepository(Indoor::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyIndoorType::class, $indoor);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {

@@ -11,12 +11,11 @@
                             <div class="col">
                                 <div class="card">
                                     <img src="{{asset(indoor.photo)}}" class="card-img-top">
-                                    <a type="button" class="btn btn-dark rounded" href="{{ path('account.indoor.modify', { 'id': indoor.id }) }}">Modify</a>
-                                    <a type="button" class="btn btn-dark rounded" href="{{ path('account.activities.delete', {'type': "Indoor",'id': indoor.id}) }}">Delete</a>
                                     <div class="card-body">
                                         <h5> {{ indoor.name }}</h5>
                                         <p> {{ indoor.description }}</p>
-                                        <a type="button" class="btn btn-dark rounded" href="{{ path('indoordetails', {'id': indoor.id }) }}">Details</a>
+                                        <a type="button" class="btn btn-dark rounded" href="{{ path('account.indoor.modify', { 'id': indoor.id }) }}">Modify</a>
+                                        <a type="button" class="btn btn-dark rounded" href="{{ path('account.activities.delete', {'type': 3,'id': indoor.id}) }}">Delete</a>
                                     </div>
                                 </div>
                             </div>

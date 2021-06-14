@@ -44,7 +44,7 @@ class EventType extends AbstractType
             ->add('link',TextType::class)
             ->add('number',IntegerType::class)
             ->add('Ajouter' , SubmitType::class ,[
-                'attr'=>['label' =>'Ajouter']
+                'attr'=>['label' =>'ADD']
             ])
         ;
     }

@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d767fe19-65d8-4db9-bff2-b162f9d5878f" name="Default Changelist" comment="creation de compte">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EndroitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EndroitType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EvenementType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EvenementType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/IndoorFType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/IndoorFType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ModifyAccountType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ModifyAccountType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/modifyAccount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyAccount.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/modifyEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyEvent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/modifyIndoor.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyIndoor.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/modifyPlace.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/modifyPlace.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/showEvents.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/showEvents.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/endroitForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +186,7 @@
       <workItem from="1622211446304" duration="447000" />
       <workItem from="1622239747612" duration="9445000" />
       <workItem from="1623630153414" duration="464000" />
+      <workItem from="1623659013175" duration="4053000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed sum stuff">
       <created>1623630069654</created>

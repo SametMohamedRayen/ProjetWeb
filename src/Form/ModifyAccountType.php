@@ -25,7 +25,7 @@ class ModifyAccountType extends AbstractType
             ->add('PlaceResidence' , TextType::class)
             ->add('occupation' ,TextType::class)
             ->add('Modifier' , SubmitType::class ,[
-                'attr'=>['label' =>'Modifier']
+                'attr'=>['label' =>'Modify']
             ])
         ;
     }

@@ -29,7 +29,7 @@ class IndoorFType extends AbstractType
             ->add('price_max',MoneyType::class,array('currency'=>'TND'))
             ->add('target',ChoiceType::class,['choices'=>['Tourists'=>'Tourists','Locals'=>'Locals','Students'=>'Students']])
             ->add('Ajouter' , SubmitType::class ,[
-                'attr'=>['label' =>'Ajouter']
+                'attr'=>['label' =>'ADD']
             ])
         ;
     }

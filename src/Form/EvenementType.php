@@ -28,7 +28,7 @@ class EvenementType extends AbstractType
             ->add('number')
             ->add('user')
             ->add('Ajouter' , SubmitType::class ,[
-                'attr'=>['label' =>'Ajouter']
+                'attr'=>['label' =>'ADD']
             ])
         ;
     }

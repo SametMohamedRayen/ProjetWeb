@@ -40,7 +40,8 @@ class AccountController extends AbstractController
     {if ($this->security->isGranted('ROLE_USER')) {
         $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $row = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
+        $row = $repository->findOneByAdresseMail($user->getAdresseMail());
+
         return $this->render('account/index.html.twig', ['row'=>$row
         ]);
     }
@@ -101,11 +102,11 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail($user->getAdressMail());
+        $acc = $repository->findOneByAdresseMail($user->getAdresseMail());
         $name = $acc->getName();
         $manager->remove($acc);
         $manager->flush();
-        return $this->redirectToRoute('home',['goodbye'=>'Goodbye '.$name.'! We will miss you :( !']);
+        return $this->redirectToRoute('home');
 
     }
 

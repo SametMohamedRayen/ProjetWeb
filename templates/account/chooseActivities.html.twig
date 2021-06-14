@@ -3,17 +3,17 @@
 {% block title%} JAWEK {% endblock %}
 {%block Stylesheet%}
      {{ parent() }}
-     <link rel="stylesheet" href="{{ asset('assets/css/styleActivities.css') }}"/>
+     <link rel="stylesheet" href="{{ asset('assets/css/styleFind2.css') }}"/>
 
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container mt-5">
 
-        <h1 class="cent">Pick a Type</h1>
-        <a class="btn btn-lg btn-primary halfs" href="{{ path('account.activities.event') }}">Event</a>
-        <a class="btn btn-lg btn-primary halfs"  href="{{ path('account.activities.indoor') }}">Indoor</a>
-        <a class="btn btn-lg btn-primary halfs"  href="{{ path('account.activities.places') }}">Place</a>
+        <h1 class="">Pick a Type</h1>
+        <a class="btn btn-lg btn-primary halfs" id="choice" href="{{ path('account.activities.event') }}">Event</a>
+        <a class="btn btn-lg btn-primary halfs" id="choice" href="{{ path('account.activities.indoor') }}">Indoor</a>
+        <a class="btn btn-lg btn-primary halfs" id="choice" href="{{ path('account.activities.places') }}">Place</a>
 
 
     </div>

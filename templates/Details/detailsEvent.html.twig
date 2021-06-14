@@ -5,16 +5,16 @@
 {% block card %}
 
     <h1 class="card-title">{{event.name }} </h1>
-    <p class="card-text">Description : {{event.description }} </p>
-    <p class="card-text">Age min : {{event.agemin }} </p>
-    <p class="card-text">Age max : {{event.agemax }}</p>
-    <p class="card-text">Eco friendly : {{event.ecofriendly }}</p>
-    <p class="card-text">Target :  </p>
-    <p class="card-text">Price : {{event.price }}</p>
-    <p class="card-text">Date : {{event.date|date("m/d/Y") }}</p>
-    <p class="card-text">Duration : {{event.duration }}</p>
-    <p class="card-text">Location : {{event.location }}</p>
-    <p class="card-text">Link : {{event.link }}</p>
-    <p class="card-text">Number :{{event.number }} </p>
+    <p class="card-text"> <span style="color: #1a82ae ; font-size:18px">Description : </span> {{event.description }} </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age min : </span> {{event.agemin }} </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age max : </span> {{event.agemax }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Eco Friendly : </span> {{event.ecofriendly }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Target : </span>  </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Price : </span> {{event.price }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Date : </span> {{event.date|date("m/d/Y") }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Duration : </span> {{event.duration }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Location : </span> {{event.location }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Link : </span> {{event.link }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Number : </span>{{event.number }} </p>
     <p class="card-text"><small class="text-muted">Added By: {{event.user }} </small></p>
 {% endblock %}

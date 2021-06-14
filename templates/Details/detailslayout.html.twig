@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="{{ path('home') }}">
         <img src="{{ asset('assets/images/icon.png') }}" height="75" alt="Logo">
     </a>
 
@@ -30,10 +30,25 @@
             </li>
 
         </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item"> <button class="btn btn-warning rounded">Se Connecter</button> </li>
-            <li class="nav-item"> <button class="btn btn-warning rounded">S'inscrire</button> </li>
-        </ul>
+        {% if app.user %}
+            <ul class="navbar-nav">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b> Account</b>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ path('account') }}">Modify Account</a>
+                        <a class="dropdown-item" href="{{ path('account.activities.choice') }}">Jawek</a>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}">LogOut</a>
+                    </div>
+                </div>
+            </ul>
+        {% else %}
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="btn btn-warning rounded" href="{{ path('app_login') }}">Log into JAWEK</a> </li>
+                <li class="nav-item"> <a class="btn btn-warning rounded" href="{{ path('app_register') }}">Become a JAWISTI</a> </li>
+            </ul>
+        {% endif %}
     </div>
 </nav>
 <div class="container mt-2">

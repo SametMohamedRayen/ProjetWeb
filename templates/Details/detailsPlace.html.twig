@@ -4,15 +4,15 @@
 
 {% block card %}
     <h5 class="card-title">{{place.name }} </h5>
-    <p class="card-text">Description : {{place.description }} </p>
-    <p class="card-text">Age min : {{place.agemin }} </p>
-    <p class="card-text">Age max : {{place.agemax }}</p>
-    <p class="card-text">Eco friendly : {{place.ecofriendly }}</p>
-    <p class="card-text">Target :  </p>
-    <p class="card-text">Price min: {{place.pricemin }}</p>
-    <p class="card-text">Price max: {{place.pricemin }}</p>
-    <p class="card-text">Location : {{place.location }}</p>
-    <p class="card-text">Opening time : {{place.open|date("h:m") }}</p>
-    <p class="card-text">Closing time : {{place.close|date("h:m") }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Description : </span>{{place.description }} </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age min : </span>{{place.agemin }} </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age max : </span> {{place.agemax }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Eco Friendly : </span> {{place.ecofriendly }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Target : </span>  </p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Price min : </span> {{place.pricemin }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Price max : </span> {{place.pricemin }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Location : </span> {{place.location }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Opening time : </span> {{place.open|date("h:m") }}</p>
+    <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Closing time : </span> {{place.close|date("h:m") }}</p>
     <p class="card-text"><small class="text-muted">Added By: {{place.user }} </small></p>
 {% endblock %}

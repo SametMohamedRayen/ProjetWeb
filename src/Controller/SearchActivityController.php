@@ -98,7 +98,6 @@ class SearchActivityController extends AbstractController
                 $j++;
             }
         }
-
         return $this->render('search/findPlaces.html.twig', [
             'placeOptions' => $form->createView(),
             'places' => $places2,

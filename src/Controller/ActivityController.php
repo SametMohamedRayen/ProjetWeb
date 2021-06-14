@@ -78,7 +78,7 @@ class ActivityController extends AbstractController
                         $this->addFlash('fail','Error while trasnferring the picture uploaded !');
                     }
                 }
-                $ind->setPhoto('assets/temp/event/'.$newimgname);
+                $ind->setPhoto('assets/temp/indoor/'.$newimgname);
                 $user = $this->getUser();
                 //COLOR VARIABLE
                 $ind->setUser($user->getAdresseMail()); //Insert here session variable for the user logged in
@@ -178,7 +178,7 @@ class ActivityController extends AbstractController
                         $this->addFlash('fail','Error while trasnferring the picture uploaded !');
                     }
                 }
-                $endroit->setPhoto('assets/temp/event/'.$newimgname);
+                $endroit->setPhoto('assets/temp/endroit/'.$newimgname);
 
                 $endroit->setUser($user->getAdresseMail()); //Insert here session variable for the user logged in
                 $manager->persist($endroit);

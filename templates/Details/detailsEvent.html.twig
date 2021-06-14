@@ -3,8 +3,9 @@
 
 {% block photo %} {{asset(event.photo)}} {% endblock %}
 {% block card %}
-
+<div class="d-flex justify-content-center mt-1">
     <h1 class="card-title">{{event.name }} </h1>
+</div>
     <p class="card-text"> <span style="color: #1a82ae ; font-size:18px">Description : </span> {{event.description }} </p>
     <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age min : </span> {{event.agemin }} </p>
     <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age max : </span> {{event.agemax }}</p>

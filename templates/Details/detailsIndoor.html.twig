@@ -4,8 +4,9 @@
 {% block photo %} {{asset(indoor.photo)}} {% endblock %}
 {% block card %}
 
-
-    <h5 class="card-title">{{indoor.name }} </h5>
+    <div class="d-flex justify-content-center mt-1">
+    <h1 class="card-title">{{indoor.name }} </h1>
+    </div>
     <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Description : </span> {{indoor.description }} </p>
     <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age min : </span> {{indoor.agemin }} </p>
     <p class="card-text"><span style="color: #1a82ae ; font-size:18px">Age max : </span>{{indoor.agemax }}</p>

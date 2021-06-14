@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="{{ asset("assets/css/nicepage.css") }}" media="screen">
     {% endblock %}
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-<title>    {% block title %}JAW{% endblock %}</title>
+    <title>{% block title %}JAW{% endblock %}</title>
 
 </head>
 <body class ="u-body">
 <!--NAVBAR-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
     <a class="navbar-brand">
-        <img src="assets/images/icon.png" height="75" alt="Logo">
+        <img src="{{ asset('assets/images/icon.png') }}" height="75" alt="Logo">
     </a>
 
     <div class="collapse navbar-collapse">
@@ -37,19 +37,25 @@
                 <a class="nav-link" href="{{ path('searchindoors') }}">Indoor Activities</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b> Account</b>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{ path('account') }}">Modify Account</a>
-                    <a class="dropdown-item" href="{{ path('account.activities.choice') }}">Jawek</a>
-                    <a class="dropdown-item" href="#">LogOut</a>
+        {% if app.user %}
+            <ul class="navbar-nav">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b> Account</b>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ path('account') }}">Modify Account</a>
+                        <a class="dropdown-item" href="{{ path('account.activities.choice') }}">Jawek</a>
+                        <a class="dropdown-item" href="#">LogOut</a>
+                    </div>
                 </div>
-            </div>
             </ul>
-        </ul>
+        {% else %}
+            <ul class="navbar-nav">
+                <li class="nav-item"> <button class="btn btn-warning rounded">Log into JAWEK</button> </li>
+                <li class="nav-item"> <button class="btn btn-warning rounded">Become a JAWISTI</button> </li>
+            </ul>
+        {% endif %}
     </div>
 </nav>
 

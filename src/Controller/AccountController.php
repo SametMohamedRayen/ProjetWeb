@@ -15,6 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Form\ModifyEventType;
+use App\Form\ModifyIndoorType;
+use App\Form\ModifyPlaceType;
+
 /**
  * @Route("/account")
  */
@@ -129,7 +133,7 @@ class AccountController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $user = $this->getUser();
 
-        $activities = $repository->findByUser($user->getAdresseMail() );
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
             $offset = 12;
             $maxpage = count( $activities)/$offset;
@@ -164,7 +168,6 @@ class AccountController extends AbstractController
 
         $repository = $this->getDoctrine()->getRepository(Endroit::class);
         $user = $this->getUser();
-
 
         $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
@@ -203,7 +206,7 @@ class AccountController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Indoor::class);
         $user = $this->getUser();
 
-        $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
+        $activities = $repository->findByUser($user->getAdresseMail());
         if (count($activities)){
             $offset = 12;
             $maxpage = count( $activities)/$offset;
@@ -279,7 +282,7 @@ class AccountController extends AbstractController
      */
     public function modifyEvent($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $event = $this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['user' => $this->getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyEventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -302,7 +305,7 @@ class AccountController extends AbstractController
      */
     public function modifyPlace($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $place = $this->getDoctrine()->getRepository(Endroit::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $place = $this->getDoctrine()->getRepository(Endroit::class)->findOneBy(['user' => $this->getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyPlaceType::class, $place);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -317,14 +320,13 @@ class AccountController extends AbstractController
         ]);
 
     }
-
     /**
      * @IsGranted("ROLE_USER")
      * @Route("/event/modify/indoor/{id}",name="account.indoor.modify")
      */
     public function modifyIndoor($id, EntityManagerInterface $manager, Request $request): Response
     {
-        $indoor = $this->getDoctrine()->getRepository(Indoor::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $indoor = $this->getDoctrine()->getRepository(Indoor::class)->findOneBy(['user' => $this->getUser()->getAdresseMail(), 'id' => $id]);
         $form = $this->createForm(ModifyIndoorType::class, $indoor);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {

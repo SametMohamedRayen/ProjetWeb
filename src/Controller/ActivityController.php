@@ -79,9 +79,9 @@ class ActivityController extends AbstractController
                     }
                 }
                 $ind->setPhoto('assets/temp/event/'.$newimgname);
-
-                //COLOR
-                $ind->setUser($this->security->getUser()->getAdresseMail());
+                $user = $this->getUser();
+                //COLOR VARIABLE
+                $ind->setUser($user->getAdresseMail()); //Insert here session variable for the user logged in
                 $manager->persist($ind);
                 $manager->flush();
                 $this->addFlash('success', 'L\'indoor ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');
@@ -114,7 +114,7 @@ class ActivityController extends AbstractController
             {
                 //COLOR VARIABLE
 
-
+            $user = $this->getUser();
                 $img = $form->get('photo')->getData();
                 if ($img) {
                     $imgname = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
@@ -130,7 +130,7 @@ class ActivityController extends AbstractController
                     }
                 $event->setPhoto('assets/temp/event/'.$newimgname);
 
-                $event->setUser($this->security->getUser()->getAdresseMail());
+                $event->setUser($user->getAdresseMail()); //Insert here session variable for the user logged in
                 $manager->persist($event);
                 $manager->flush();
                 $this->addFlash('success', 'L\'evenement ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');
@@ -163,6 +163,7 @@ class ActivityController extends AbstractController
                 $form->get('price_max')->getData()
             ))
             {
+                $user = $this->getUser();
                 //COL
                 $img = $form->get('photo')->getData();
                 if ($img) {
@@ -179,7 +180,7 @@ class ActivityController extends AbstractController
                 }
                 $endroit->setPhoto('assets/temp/event/'.$newimgname);
 
-                $endroit->setUser($this->security->getUser()->getAdresseMail());
+                $endroit->setUser($user->getAdresseMail()); //Insert here session variable for the user logged in
                 $manager->persist($endroit);
                 $manager->flush();
                 $this->addFlash('success', 'L\'endroit ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');

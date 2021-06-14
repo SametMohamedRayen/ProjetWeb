@@ -20,7 +20,7 @@
                                         <p>City: {{ event.location }}</p>
                                         <p>Date: {{ event.date|date("m/d/Y") }}</p>
                                         <p>Price: {{ event.price}} </p>
-                                        <a type="button" class="btn btn-dark rounded" href="{{ path('account.event.modify', {'id': event.id }) }}">Modify</a>
+                                        <a type="button" class="btn btn-dark rounded mb-1" href="{{ path('account.event.modify', {'id': event.id }) }}">Modify</a>
                                         <a type="button" class="btn btn-dark rounded" href="{{ path('account.activities.delete', {'type':1,'id': event.id }) }}">Delete</a>
                                     </div>
                                 </div>

@@ -18,46 +18,61 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 /**
  * @Route("/account")
  */
 class AccountController extends AbstractController
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
 
 
     /**
      * @Route("/",name="account")
      */
     public function index(): Response
-    {
+    {if ($this->security->isGranted('ROLE_USER')) {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $row = $repository->findOneByAdresseMail("tasnim@gmail.tn"); //FIX
-        return $this->render('account/index.html.twig', ['row' => $row
+        $row = $repository->findOneByAdresseMail(11); //FIX
+        return $this->render('account/index.html.twig', ['row'=>$row
         ]);
+    }
+    else{
+        return $this->redirectToRoute('app_login');
+    }
 
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/modifyaccount",name="modifyaccount")
      */
-    public function modifyaccount(EntityManagerInterface $manager, Request $request)
+    public function modifyaccount(EntityManagerInterface $manager,Request $request)
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
         $acc = $repository->findOneByAdresseMail("tasnim@gmail.tn"); //FIX
 
-        $form = $this->createForm(ModifyAccountType::class, $acc);
+        $form = $this->createForm(ModifyAccountType::class,$acc);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-            if ($this->valid($form)) {
+        if($form->isSubmitted())
+        {
+            if($this->valid($form))
+            {
                 $manager->persist($acc);
                 $manager->flush();
-                $this->addFlash('success', 'Account information updated with success !');
+                $this->addFlash('success','Account information updated with success !');
             }
         }
-        return ($this->render('account/modifyAccount.html.twig', ['row' => $acc,
-            'form' => $form->createView()]));
+        return($this->render('account/modifyAccount.html.twig' ,['row'=>$acc ,
+        'form' => $form->createView()]));
     }
 
     public function isCsrfTokenValid(string $id, ?string $token): bool
@@ -69,23 +84,46 @@ class AccountController extends AbstractController
     {
         $compte = $this->getDoctrine()->getRepository(Compte::class);
         $result = $compte->findByUsername($form->get("username")->getData());
-        if (isset($result)) {
-            $this->addFlash('fail', 'Essayer de Saisir un nouveau username ,cela déja existe !');
+        if(isset($result))
+        {
+            $this->addFlash('fail','Essayer de Saisir un nouveau username ,cela déja existe !');
             return false;
         }
         return true;
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route ("/deleteaccount",name="deleteaccount")
      */
-    public function deleteaccount(EntityManagerInterface $manager, Request $request)
+    public function deleteaccount(EntityManagerInterface $manager,Request $request)
     {
+        $user = $this->getUser();
+        $repository = $this->getDoctrine()->getRepository(Compte::class);
+        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $name = $acc->getName();
+        $manager->remove($acc);
+        $manager->flush();
+        return $this->redirectToRoute('home',['goodbye'=>'Goodbye '.$name.'! We will miss you :( !']);
 
     }
 
+    /**
+     *  @IsGranted("ROLE_USER")
+     * @Route ("/deleteAccountConfirm",name="deleteAccountConfirm")
+     */
+
+    public function deleteAccountConfirm()
+    {
+        return ($this->render('account/deleteAccountConfirm.html.twig'));
+    }
+
+
+
+
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/events/{page?1}",name="account.activities.event")
      */
     public function showEvents($page): Response
@@ -95,30 +133,30 @@ class AccountController extends AbstractController
 
 
         /*$user = $this->getUser();
-
         if($user && !in_array('ROLE',$user->getRoles())) {
             $conditions = ['user' => $user];
         }*/
 
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
-        if (count($activities)) {
-            $offset = 12;
-            $maxpage = count($activities) / $offset;
-            $activities2 = null;
-            $j = 1;
-            for ($i = ($page - 1) * $offset; $i < ($page - 1) * $offset + $offset; $i++) {
-                if (isset($activities[$i])) {
-                    $activities2[$j] = $activities[$i];
-                    $j++;
-                }
+        if (count($activities)){
+        $offset = 12;
+        $maxpage = count( $activities)/$offset;
+        $activities2= null;
+        $j=1;
+        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+        {
+            if(isset($activities[$i])) {
+                $activities2[$j] = $activities[$i];
+                $j++;
             }
-            return $this->render('account/showEvents.html.twig', [
-                'activities' => $activities2,
-                'page' => $page,
-                'maxpage' => $maxpage,
+        }
+        return $this->render('account/showEvents.html.twig', [
+            'activities'=> $activities2,
+            'page'=>$page,
+            'maxpage'=> $maxpage,
 
-            ]);
-        } else {
+        ]);
+        }else{
             $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
         }
@@ -126,6 +164,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/places/{page?1}",name="account.activities.places")
      */
     public function showPlaces($page): Response
@@ -138,32 +177,34 @@ class AccountController extends AbstractController
         }*/
 
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
-        if (count($activities)) {
+        if (count($activities)){
 
-            $offset = 12;
-            $maxpage = count($activities) / $offset;
-            $activities2 = null;
-            $j = 1;
-            for ($i = ($page - 1) * $offset; $i < ($page - 1) * $offset + $offset; $i++) {
-                if (isset($activities[$i])) {
-                    $activities2[$j] = $activities[$i];
-                    $j++;
-                }
+        $offset = 12;
+        $maxpage = count( $activities)/$offset;
+        $activities2= null;
+        $j=1;
+        for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+        {
+            if(isset($activities[$i])) {
+                $activities2[$j] = $activities[$i];
+                $j++;
             }
-            return $this->render('account/showPlaces.html.twig', [
-                'activities' => $activities2,
-                'page' => $page,
-                'maxpage' => $maxpage,
+        }
+        return $this->render('account/showPlaces.html.twig', [
+            'activities'=> $activities2,
+            'page'=>$page,
+            'maxpage'=> $maxpage,
 
-            ]);
-        } else {
-            $this->addFlash('error', "You haven't shared any places yet , but late is better than never");
-            return $this->redirectToRoute('account.activities.choice');
+        ]);
+       }else{
+        $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+        return $this->redirectToRoute('account.activities.choice');
         }
 
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/indoor/{page?1}",name="account.activities.indoor")
      */
     public function showIndoor($page): Response
@@ -173,21 +214,22 @@ class AccountController extends AbstractController
         $user = $this->getUser();
 
         $activities = $repository->findByUser(/*$user->getAdresseMail()*/ 'tasnim@gmail.tn');
-        if (count($activities)) {
+        if (count($activities)){
             $offset = 12;
-            $maxpage = count($activities) / $offset;
-            $activities2 = null;
-            $j = 1;
-            for ($i = ($page - 1) * $offset; $i < ($page - 1) * $offset + $offset; $i++) {
-                if (isset($activities[$i])) {
+            $maxpage = count( $activities)/$offset;
+            $activities2= null;
+            $j=1;
+            for($i=($page-1)*$offset;$i<($page-1)*$offset+$offset;$i++)
+            {
+                if(isset($activities[$i])) {
                     $activities2[$j] = $activities[$i];
                     $j++;
                 }
             }
             return $this->render('account/showIndoor.html.twig', [
-                'activities' => $activities2,
-                'page' => $page,
-                'maxpage' => $maxpage,
+                'activities'=> $activities2,
+                'page'=>$page,
+                'maxpage'=> $maxpage,
 
             ]);
         } else {
@@ -197,7 +239,9 @@ class AccountController extends AbstractController
     }
 
 
+
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities",name="account.activities.choice")
      */
     public function chooseActivities(): Response
@@ -208,24 +252,25 @@ class AccountController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/activities/delete/{type}/{id}",name="account.activities.delete")
      */
-    public function deleteActivity($type, $id, EntityManagerInterface $manager): Response
+    public function deleteActivity($type ,$id ,EntityManagerInterface $manager): Response
     {
         //Getting object by id
         if ($type == 1) {
             $activity = $this->getDoctrine()->getRepository(Evenement::class)->findOneById($id);
-            $route = 'account.activities.event';
-        } else if ($type == 2) {
+            $route ='account.activities.event';
+        }else if ($type == 2){
             $activity = $this->getDoctrine()->getRepository(Endroit::class)->findOneById($id);
-            $route = 'account.activities.places';
+            $route ='account.activities.place';
         } else {
             $activity = $this->getDoctrine()->getRepository(Indoor::class)->findOneById($id);
-            $route = 'account.activities.indoor';
+            $route ='account.activities.indoor';
         }
 
         if ($activity) {
-            $Name = $activity->getName();
+            $Name =$activity->getName();
             $manager->remove($activity);
             $manager->flush();
             $this->addFlash('success', " Plan $Name was succesfully deleted");
@@ -239,6 +284,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/event/{id}",name="account.event.modify")
      */
     public function modifyEvent($id, EntityManagerInterface $manager, Request $request): Response
@@ -261,6 +307,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/place/{id}",name="account.place.modify")
      */
     public function modifyPlace($id, EntityManagerInterface $manager, Request $request): Response
@@ -282,6 +329,7 @@ class AccountController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/event/modify/indoor/{id}",name="account.indoor.modify")
      */
     public function modifyIndoor($id, EntityManagerInterface $manager, Request $request): Response

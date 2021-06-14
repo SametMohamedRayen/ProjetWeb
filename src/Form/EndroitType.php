@@ -39,7 +39,7 @@ class EndroitType extends AbstractType
             ->add('open',TimeType::class)
             ->add('close',TimeType::class)
             ->add('Ajouter' , SubmitType::class ,[
-                'attr'=>['label' =>'Ajouter']
+                'attr'=>['label' =>'ADD']
             ])
         ;
     }

@@ -7,14 +7,14 @@
     <div class="container">
         <div class="jumbotron">
             <!-- get name -->
-            <h2>Modifying my Account , hi {{ row.name }} !</h2>
+            <h2>Hi {{ row.name }} ! Feel free to modify your Account </h2>
             <br>
             {% block form %}
                 {{ form(form) }}
             {% endblock %}
             <br>
             <a class="btn btn-outline-secondary" href="{{ path('account') }}">Return to account settings</a>
-
+            <a class="btn btn-outline-secondary" href="{{ path('home') }}">Go back to home</a>
         </div>
     </div>
 {% endblock %}

@@ -7,7 +7,6 @@ use App\Entity\Endroit;
 use App\Entity\Evenement;
 use App\Entity\Indoor;
 use App\Form\ModifyAccountType;
-use App\Form\RegistrationFormType;
 use ContainerBi1bDen\getEndroitRepositoryService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,7 +34,7 @@ class AccountController extends AbstractController
      */
     public function index(): Response
     {if ($this->security->isGranted('ROLE_USER')) {
-        $user = $this->getUser();
+        $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
         $row = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
         return $this->render('account/index.html.twig', ['row'=>$row
@@ -53,10 +52,9 @@ class AccountController extends AbstractController
      */
     public function modifyaccount(EntityManagerInterface $manager,Request $request)
     {
-
         $user = $this->security->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail($user->getAdresseMail()); //FIX
+        $acc = $repository->findOneByAdresseMail($user->getAdresseMail());
 
         $form = $this->createForm(ModifyAccountType::class,$acc);
         $form->handleRequest($request);
@@ -67,6 +65,7 @@ class AccountController extends AbstractController
                 $manager->persist($acc);
                 $manager->flush();
                 $this->addFlash('success','Account information updated with success !');
+                return ($this->redirectToRoute('account'));
             }
         }
         return($this->render('account/modifyAccount.html.twig' ,['row'=>$acc ,
@@ -98,7 +97,7 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Compte::class);
-        $acc = $repository->findOneByAdresseMail(11); //FIX
+        $acc = $repository->findOneByAdresseMail($user->getAdressMail());
         $name = $acc->getName();
         $manager->remove($acc);
         $manager->flush();
@@ -126,6 +125,7 @@ class AccountController extends AbstractController
      */
     public function showEvents($page): Response
     {
+
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $user = $this->getUser();
 
@@ -149,7 +149,7 @@ class AccountController extends AbstractController
 
             ]);
         }else{
-            $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+            $this->addFlash('error', "You haven't shared any events yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
         }
 
@@ -186,7 +186,7 @@ class AccountController extends AbstractController
 
             ]);
         }else{
-            $this->addFlash('error', "You haven't shared any Indoor activities yet , but late is better than never");
+            $this->addFlash('error', "You haven't shared any places yet , but late is better than never");
             return $this->redirectToRoute('account.activities.choice');
         }
 
@@ -276,9 +276,22 @@ class AccountController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @Route("/event/modify/event/{id}",name="account.event.modify")
      */
-    public function modifyEvent($id): Response
+    public function modifyEvent($id, EntityManagerInterface $manager, Request $request): Response
     {
-        return $this->render('account/modifyEvent.html.twig');
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $form = $this->createForm(ModifyEventType::class, $event);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $manager->persist($event);
+            $manager->flush();
+            $this->addFlash('success', 'Mabrook Event information updated  !');
+            $this->redirectToRoute('account.activities.event');
+
+        }
+        return $this->render('account/modifyEvent.html.twig', [
+            'event' => $event,
+            'form' => $form->createView()
+        ]);
 
     }
 
@@ -286,20 +299,42 @@ class AccountController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @Route("/event/modify/place/{id}",name="account.place.modify")
      */
-    public function modifyPlace($id): Response
+    public function modifyPlace($id, EntityManagerInterface $manager, Request $request): Response
     {
-        return $this->render('account/modifyPlace.html.twig');
+        $place = $this->getDoctrine()->getRepository(Endroit::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $form = $this->createForm(ModifyPlaceType::class, $place);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $manager->persist($place);
+            $manager->flush();
+            $this->addFlash('success', 'Mabrook Place information updated  !');
+            return $this->redirectToRoute('account.activities.places');
+        }
+        return $this->render('account/modifyPlace.html.twig', [
+            'place' => $place,
+            'form' => $form->createView()
+        ]);
 
     }
     /**
      * @IsGranted("ROLE_USER")
      * @Route("/event/modify/indoor/{id}",name="account.indoor.modify")
      */
-    public function modifyIndoor($id): Response
+    public function modifyIndoor($id, EntityManagerInterface $manager, Request $request): Response
     {
-
-
-        return $this->render('account/modifyIndoor.html.twig');
+        $indoor = $this->getDoctrine()->getRepository(Indoor::class)->findOneBy(['user' => getUser()->getAdresseMail(), 'id' => $id]);
+        $form = $this->createForm(ModifyIndoorType::class, $indoor);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $manager->persist($indoor);
+            $manager->flush();
+            $this->addFlash('success', 'Mabrook Indoor activity information updated  !');
+            return $this->redirectToRoute('account.activities.indoor');
+        }
+        return $this->render('account/modifyIndoor.html.twig', [
+            'indoor' => $indoor,
+            'form' => $form->createView()
+        ]);
 
     }
 }

@@ -5,8 +5,10 @@ const change = document.getElementById("changecolor");
 change.addEventListener("mouseover",()=>
 {
     document.getElementById("menu").style.visibility ="visible";
+    if(document.getElementById('ws').innerHTML == "")
+    {
     document.getElementById('ws').appendChild(document.createElement("br"));
-    document.getElementById('ws').appendChild(document.createElement("br"));
+    document.getElementById('ws').appendChild(document.createElement("br"));}
 });
 
 document.getElementById("menu").addEventListener("mouseout",()=>

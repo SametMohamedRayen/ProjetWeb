@@ -80,8 +80,8 @@ class ActivityController extends AbstractController
                 }
                 $ind->setPhoto('assets/temp/event/'.$newimgname);
 
-                //COLOR VARIABLE
-                $ind->setUser('ab'); //Insert here session variable for the user logged in
+                //COLOR
+                $ind->setUser($this->security->getUser()->getAdresseMail());
                 $manager->persist($ind);
                 $manager->flush();
                 $this->addFlash('success', 'L\'indoor ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');
@@ -130,7 +130,7 @@ class ActivityController extends AbstractController
                     }
                 $event->setPhoto('assets/temp/event/'.$newimgname);
 
-                $event->setUser('ab'); //Insert here session variable for the user logged in
+                $event->setUser($this->security->getUser()->getAdresseMail());
                 $manager->persist($event);
                 $manager->flush();
                 $this->addFlash('success', 'L\'evenement ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');
@@ -179,7 +179,7 @@ class ActivityController extends AbstractController
                 }
                 $endroit->setPhoto('assets/temp/event/'.$newimgname);
 
-                $endroit->setUser('ab'); //Insert here session variable for the user logged in
+                $endroit->setUser($this->security->getUser()->getAdresseMail());
                 $manager->persist($endroit);
                 $manager->flush();
                 $this->addFlash('success', 'L\'endroit ' . $form->get('name')->getData() . ' a été ajouté avec succés ! ');

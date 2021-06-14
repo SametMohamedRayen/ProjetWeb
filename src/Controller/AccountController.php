@@ -106,7 +106,7 @@ class AccountController extends AbstractController
         $name = $acc->getName();
         $manager->remove($acc);
         $manager->flush();
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('home',['goodbye'=>"Goodbye ".$name."! The JAW won't be the same without you :( !"]);
 
     }
 

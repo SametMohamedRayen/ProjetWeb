@@ -22,8 +22,8 @@
         </div>
             <br>
             {% block form %}{{ form(form) }}{% endblock %}
-           <button type="button" class="btn btn-primary" href="{{ path('home') }}">Go back to home</button>
-           <button type="button" class="btn btn-primary" href="{{ path('inout') }}">Add another plan</button>
+            <a class="btn btn-outline-secondary" href="{{ path('inout') }}">Add another plan</a>
+            <a class="btn btn-outline-secondary" href="{{ path('home') }}">Go back to home</a>
             <br>
         </div>
     </div>

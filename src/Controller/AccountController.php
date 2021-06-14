@@ -7,7 +7,6 @@ use App\Entity\Endroit;
 use App\Entity\Evenement;
 use App\Entity\Indoor;
 use App\Form\ModifyAccountType;
-use App\Form\RegistrationFormType;
 use ContainerBi1bDen\getEndroitRepositoryService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/account")
  */
